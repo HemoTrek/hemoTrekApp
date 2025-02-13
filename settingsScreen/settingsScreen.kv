@@ -1,0 +1,114 @@
+<SettingsScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.primaryColor
+
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1.01
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "menu"
+
+            MDTopAppBarTitle:
+                text: "Settings Page"
+                pos_hint: {"center_x": .5}
+
+            MDTopAppBarTrailingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "home"
+                    on_press: root.return_home()
+
+        # ----------------------------------------------------
+        # Scrollable Area for Main Settings
+        # ----------------------------------------------------
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                cols: 2
+                padding: 20
+                spacing: 20
+
+                # 1) Username Setting
+                Label:
+                    text: "Username:"
+                    font_size: '16sp'
+                    halign: 'right'
+                    valign: 'middle'
+                    # Make text aligned properly in the center of the cell
+                    text_size: self.size
+
+                TextInput:
+                    id: username_field
+                    font_size: '16sp'
+
+                # 2) Dark Mode Switch
+                Label:
+                    text: "Dark Mode:"
+                    font_size: '16sp'
+                    halign: 'right'
+                    valign: 'middle'
+                    text_size: self.size
+
+                Switch:
+                    id: dark_mode_switch
+                    active: False
+                    # on_active: root.on_dark_mode_toggle(*args)
+
+                # 3) Notifications Switch
+                Label:
+                    text: "Notifications:"
+                    font_size: '16sp'
+                    halign: 'right'
+                    valign: 'middle'
+                    text_size: self.size
+
+                Switch:
+                    id: notifications_switch
+                    active: True
+
+                # 4) Volume Slider
+                Label:
+                    text: "Volume:"
+                    font_size: '16sp'
+                    halign: 'right'
+                    valign: 'middle'
+                    text_size: self.size
+
+                Slider:
+                    id: volume_slider
+                    min: 0
+                    max: 100
+                    value: 75
+
+        # ----------------------------------------------------
+        # Bottom Bar for Buttons (Save / Return Home)
+        # ----------------------------------------------------
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            padding: [20, 10]
+            spacing: 20
+
+            MDButton:
+                style: "elevated"
+                width: 150
+
+                on_press: root.save_changes(username_field.text, dark_mode_switch.active, notifications_switch.active, volume_slider.value)
+                
+                MDButtonText:
+                    text: "Save"
+
+            MDButton:
+                style: "elevated"
+                width: 150
+
+                on_press: root.return_home()
+
+                MDButtonText:
+                    text: "Return Home"

@@ -1,0 +1,45 @@
+<HomeScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.primaryColor
+
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1.01
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "menu"
+
+            MDTopAppBarTitle:
+                text: "Home Page"
+                pos_hint: {"center_x": .5}
+
+            MDTopAppBarTrailingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "tune"
+                    on_press: root.open_settings()
+
+        # ---------------------------
+        # Main Content Below
+        # ---------------------------
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: 20
+            padding: 20
+
+            MDLabel:
+                font_style: "Display"
+                halign: "center"
+
+                text: "Welcome to HemoTrek!"
+
+            MDButton:
+                style: "elevated"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                on_press: root.open_listPatients()
+
+                MDButtonText:
+                    text: "Start Test"

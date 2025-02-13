@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  kivyapp:
+    build: .
+    ports:
+      - "5900:5900"   # Exposes the VNC server port so developers can connect using a VNC client.
+    volumes:
+      - ./data:/app/data   # Mounts the local 'data' folder to persist your SQLite DB.
+    environment:
+      - DISPLAY=:0   # Sets the virtual display variable (this is also defined in your Dockerfile)
