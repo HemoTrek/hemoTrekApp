@@ -1,45 +1,24 @@
+from kivy.properties import StringProperty, BooleanProperty
+
 from kivy.uix.gridlayout import GridLayout
 from kivymd.uix.button import MDButton, MDIconButton, MDButtonText
 from kivymd.uix.label import MDLabel
 from kivymd.uix.card import MDCard
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.card import MDCard
+
+from helperPage.helperPage import helperPage
 
 import sqlite3
+import socket
 
-class MyCard(MDCard):
+HOST = '127.0.0.1'  # Server address on the same machine.
+PORT = 65432        # Must match the server's port.
+class PatientCard(MDCard):
     '''Implements a material card.'''
 
-class listPatientsScreen(MDScreen):
-
-    def start_test(self, *args):
-        """
-        This method is called when the 'Start Test' button is pressed.
-        """
-        print("listPatientsScreen - Test Started")
-        print(*args)
-
-        self.manager.current = 'test'
-
-    def open_settings(self):
-        """
-        This method is called when the 'Start Test' button is pressed.
-        """
-        print("listPatientsScreen - Open Settings")
-        self.manager.current = 'settings'
-
-    def return_home(self):
-        """Navigates back to the home screen."""
-        self.manager.current = 'home'
-
-    def add_patient(self):
-        """
-        This method is called when the 'Start Test' button is pressed.
-        """
-        print("Add Patient")
-        self.manager.current = 'addPatient'
-
-
+class listPatientsScreen(helperPage):
 
     def on_enter(self):
         users = self.get_all_users()
@@ -84,7 +63,7 @@ class listPatientsScreen(MDScreen):
             
             # Now add the card with our evenly spaced content.
             self.ids.user_box.add_widget(
-                MyCard(
+                PatientCard(
                     content,
                     style="filled",
                     ripple_behavior=True,

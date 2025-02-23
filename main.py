@@ -1,6 +1,8 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
+from kivy.core.window import Window
+from kivy.modules import inspector
 
 # Import your screen classes
 from homeScreen.homeScreen import HomeScreen
@@ -12,6 +14,8 @@ from addPatient.addPatient import AddPatient
 
 class MyApp(MDApp):
     def build(self):
+        inspector.create_inspector(Window, self)
+
         # Explicitly load the .kv files for each screen
         Builder.load_file("homeScreen/homeScreen.kv")
         Builder.load_file("testScreen/testScreen.kv")

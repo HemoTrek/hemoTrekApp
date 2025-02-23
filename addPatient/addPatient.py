@@ -1,13 +1,8 @@
-from kivy.uix.screenmanager import Screen
+from helperPage.helperPage import helperPage
 
 import sqlite3
 
-
-class AddPatient(Screen):
-    
-    def return_to_patients(self):
-        """Navigates back to the listPatients screen."""
-        self.manager.current = 'listPatients'
+class AddPatient(helperPage):
 
     def save_changes(self, name, email):
         """
