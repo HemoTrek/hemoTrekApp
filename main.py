@@ -11,6 +11,25 @@ from settingsScreen.settingsScreen import SettingsScreen
 from listPatientsScreen.listPatientsScreen import listPatientsScreen
 from addPatient.addPatient import AddPatient
 
+import sqlite3
+
+def init_db():
+    # Read the entire SQL script into a string
+    with open("schema.sql", "r") as f:
+        sql_script = f.read()
+
+    # Connect to your local database file (or memory DB if you want)
+    conn = sqlite3.connect("data/patients.db")
+    cursor = conn.cursor()
+
+    # Execute the script. This runs each statement in schema.sql
+    cursor.executescript(sql_script)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print("Database initialized from schema.sql")
+
 
 class MyApp(MDApp):
     def build(self):
@@ -35,6 +54,6 @@ class MyApp(MDApp):
         sm.add_widget(AddPatient(name='addPatient'))
         return sm
 
-
 if __name__ == "__main__":
+    init_db()
     MyApp().run()

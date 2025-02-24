@@ -8,19 +8,13 @@ class AddPatient(helperPage):
         """
         Insert a new user (patient) into the `patientInfo` table.
         """
-        conn = sqlite3.connect('data/testDB.db')
+        conn = sqlite3.connect('data/patients.db')
         c = conn.cursor()
-
-        # Insert the new record
         c.execute(
             "INSERT INTO patientInfo (name) VALUES (?)", 
             (name,)
         )
-
-        # Commit the transaction so changes are saved
         conn.commit()
-
-        # Clean up
         c.close()
         conn.close()
         
