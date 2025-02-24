@@ -11,7 +11,6 @@ from kivymd.uix.card import MDCard
 from helperPage.helperPage import helperPage
 
 import sqlite3
-import socket
 
 HOST = '127.0.0.1'  # Server address on the same machine.
 PORT = 65432        # Must match the server's port.
@@ -75,8 +74,7 @@ class listPatientsScreen(helperPage):
             )
 
     def get_all_users(self):
-        import sqlite3
-        conn = sqlite3.connect('data/testDB.db')
+        conn = sqlite3.connect('data/patients.db')
         c = conn.cursor()
         c.execute("SELECT * FROM patientInfo;")
         rows = c.fetchall()
@@ -85,7 +83,7 @@ class listPatientsScreen(helperPage):
         return rows
     
     def clear_all_users(self):
-        conn = sqlite3.connect('data/testDB.db')
+        conn = sqlite3.connect('data/patients.db')
         c = conn.cursor()
         c.execute("DELETE FROM patientInfo;")
         conn.commit()
