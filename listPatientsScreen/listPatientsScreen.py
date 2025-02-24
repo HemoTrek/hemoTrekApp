@@ -21,11 +21,11 @@ class PatientCard(MDCard):
 class listPatientsScreen(helperPage):
 
     def on_enter(self):
-        users = self.get_all_users()
+        patientInfo = self.get_all_users()
         # Clear any existing widgets from prior loads
         self.ids.user_box.clear_widgets()
         
-        for row in users:
+        for row in patientInfo:
             # Create a GridLayout with three columns that fills the card horizontally.
             content = GridLayout(
                 cols=3,
@@ -44,7 +44,7 @@ class listPatientsScreen(helperPage):
             # Middle column: the label
             content.add_widget(
                 MDLabel(
-                    text=f"ID: {row[0]}, Username: {row[1]}, Email: {row[2]}",
+                    text=f"ID: {row[0]}, Username: {row[1]}",
                     halign="center",
                     valign="middle",
                 )
@@ -78,17 +78,16 @@ class listPatientsScreen(helperPage):
         import sqlite3
         conn = sqlite3.connect('data/testDB.db')
         c = conn.cursor()
-        c.execute("SELECT * FROM users;")
+        c.execute("SELECT * FROM patientInfo;")
         rows = c.fetchall()
         c.close()
         conn.close()
         return rows
-
     
     def clear_all_users(self):
         conn = sqlite3.connect('data/testDB.db')
         c = conn.cursor()
-        c.execute("DELETE FROM users;")
+        c.execute("DELETE FROM patientInfo;")
         conn.commit()
         c.close()
         conn.close()

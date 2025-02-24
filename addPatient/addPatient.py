@@ -4,17 +4,17 @@ import sqlite3
 
 class AddPatient(helperPage):
 
-    def save_changes(self, name, email):
+    def save_changes(self, name):
         """
-        Insert a new user (patient) into the `users` table.
+        Insert a new user (patient) into the `patientInfo` table.
         """
         conn = sqlite3.connect('data/testDB.db')
         c = conn.cursor()
 
         # Insert the new record
         c.execute(
-            "INSERT INTO users (username, email) VALUES (?, ?)", 
-            (name, email)
+            "INSERT INTO patientInfo (name) VALUES (?)", 
+            (name,)
         )
 
         # Commit the transaction so changes are saved
@@ -23,11 +23,6 @@ class AddPatient(helperPage):
         # Clean up
         c.close()
         conn.close()
-
-        print("Saving changes...")
-        print(f"Name: {name}")
-        print(f"Email: {email}")
-        print("Settings (user info) saved!")
         
         self.manager.current = 'listPatients'
 

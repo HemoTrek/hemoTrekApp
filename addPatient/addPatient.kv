@@ -8,10 +8,6 @@
             size_hint_x: 1.01
             pos_hint: {"center_x": .5, "center_y": .5}
 
-            MDTopAppBarLeadingButtonContainer:
-                MDActionTopAppBarButton:
-                    icon: "menu"
-
             MDTopAppBarTitle:
                 text: "Settings Page"
                 pos_hint: {"center_x": .5}
@@ -34,29 +30,16 @@
                 padding: 20
                 spacing: 20
 
-                # 1) Username Setting
                 Label:
                     text: "Name:"
-                    font_size: '16sp'
-                    halign: 'right'
+                    font_size: '32sp'
+                    halign: 'left'
                     valign: 'middle'
                     text_size: self.size
 
                 TextInput:
                     id: name
-                    font_size: '16sp'
-
-                # 2) Dark Mode Switch
-                Label:
-                    text: "Email:"
-                    font_size: '16sp'
-                    halign: 'right'
-                    valign: 'middle'
-                    text_size: self.size
-
-                TextInput:
-                    id: email
-                    font_size: '16sp'
+                    font_size: '32sp'
 
 
         # ----------------------------------------------------
@@ -72,7 +55,7 @@
                 style: "elevated"
                 width: 150
 
-                on_press: root.save_changes(name.text, email.text)
+                on_press: root.save_changes(name.text)
                 
                 MDButtonText:
                     text: "Save"
