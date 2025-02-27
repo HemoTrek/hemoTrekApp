@@ -1,7 +1,7 @@
 <SelectTestType>:
     MDBoxLayout:
         orientation: 'vertical'
-        md_bg_color: 'blue'
+        md_bg_color: 0, 0, 1, 1
 
         MDTopAppBar:
             type: "small"
@@ -55,7 +55,7 @@
             # A large button filling this bottom layout
             MDButton:
                 style: "elevated"
-                on_press: root.open_listPatients()
+                on_press: root.open_oncology_patients_screen()
 
                 MDButtonText:
                     text: "Oncology"

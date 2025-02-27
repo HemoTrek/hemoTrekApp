@@ -31,6 +31,12 @@ class helperPage(MDScreen):
         Navigates to the emergency patient list screen.
         """
         self.manager.current = 'emergencyPatients'  
+    
+    def open_oncology_patients_screen(self):
+        """
+        Navigates to the emergency patient list screen.
+        """
+        self.manager.current = 'oncologyPatients'
 
     def return_home(self):
         """
