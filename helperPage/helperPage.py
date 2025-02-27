@@ -17,7 +17,9 @@ class helperPage(MDScreen):
         """
         This method is called when the 'Start Test' button is pressed.
         """
-        self.manager.current = 'listPatients'
+        # self.manager.current = 'listPatients'
+        self.manager.current = 'selectTestType'
+
 
     def return_home(self):
         """
@@ -46,9 +48,14 @@ class helperPage(MDScreen):
 
         self.manager.current = 'test'
 
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
-            client.connect((HOST, PORT))
-            command = "start test"
-            client.sendall(command.encode())
-            response = client.recv(1024)
-            print("Response from firmware:", response.decode())
+    def select_emergency(self):
+        """
+        Navigates to the emergency patient list screen.
+        """
+        self.manager.current = 'test'            
+        # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
+        #     client.connect((HOST, PORT))
+        #     command = "start test"
+        #     client.sendall(command.encode())
+        #     response = client.recv(1024)
+        #     print("Response from firmware:", response.decode())
