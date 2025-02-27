@@ -11,6 +11,7 @@ from settingsScreen.settingsScreen import SettingsScreen
 from listPatientsScreen.listPatientsScreen import listPatientsScreen
 from addPatient.addPatient import AddPatient
 from selectTestType.selectTestType import SelectTestType
+from emergencyPatients.emergencyPatients import EmergencyPatients
 
 import sqlite3
 
@@ -43,6 +44,7 @@ class MyApp(MDApp):
         Builder.load_file("listPatientsScreen/listPatientsScreen.kv")
         Builder.load_file("addPatient/addPatient.kv")
         Builder.load_file("selectTestType/selectTestType.kv")
+        Builder.load_file("emergencyPatients/emergencyPatients.kv")
 
         
         self.theme_cls.theme_style = "Dark"  # or "Light"
@@ -56,6 +58,7 @@ class MyApp(MDApp):
         sm.add_widget(listPatientsScreen(name='listPatients'))
         sm.add_widget(AddPatient(name='addPatient'))
         sm.add_widget(SelectTestType(name='selectTestType'))
+        sm.add_widget(EmergencyPatients(name='emergencyPatients'))
         return sm
 
 if __name__ == "__main__":

@@ -18,8 +18,19 @@ class helperPage(MDScreen):
         This method is called when the 'Start Test' button is pressed.
         """
         # self.manager.current = 'listPatients'
-        self.manager.current = 'selectTestType'
+        self.manager.current = 'listPatients'
 
+    def open_test_type_screen(self):
+        """
+        Navigates to the emergency patient list screen.
+        """
+        self.manager.current = 'selectTestType'  
+
+    def open_emergency_patients_screen(self):
+        """
+        Navigates to the emergency patient list screen.
+        """
+        self.manager.current = 'emergencyPatients'  
 
     def return_home(self):
         """
@@ -47,6 +58,8 @@ class helperPage(MDScreen):
         print(*args)
 
         self.manager.current = 'test'
+
+   
 
     def select_emergency(self):
         """

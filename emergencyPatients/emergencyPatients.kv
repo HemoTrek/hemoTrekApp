@@ -1,0 +1,76 @@
+<EmergencyPatients>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 'red'
+        
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1.01
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDTopAppBarLeadingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "home"
+                    on_press: root.return_home()                    
+
+            MDTopAppBarTitle:
+                text: "Select Patient or Simply Run Test!"
+                pos_hint: {"center_x": .5}
+
+            MDTopAppBarTrailingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "refresh"
+                    on_press: root.on_enter()
+
+                MDActionTopAppBarButton:
+                    icon: "tune"
+                    on_press: root.open_settings()
+
+        # ----------------------------------------
+        # SCROLLABLE AREA
+        # ----------------------------------------
+        ScrollView:
+            size_hint_y: 0.75
+            # If you also want horizontal scroll, set do_scroll_x: True
+            do_scroll_x: False
+            do_scroll_y: True
+
+            MDBoxLayout:
+                id: user_box
+                orientation: "vertical"
+                spacing: "10dp"
+                padding: "10dp"
+
+                # The crucial part: let it size itself vertically (None)
+                # and grow with content
+                size_hint_y: None
+                height: self.minimum_height
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: "60dp"
+            spacing: "10dp"
+            padding: "10dp"
+
+            MDButton:
+                on_press: root.add_patient()
+
+                MDButtonText:
+                    text: "Add Patient"
+
+            MDButton:
+                on_press: root.clear_all_users()
+
+                MDButtonText:
+                    text: "Clear Patient List"
+
+            MDButton:
+                on_press: root.start_test()
+
+                MDButtonText:
+                    text: "Run Without Patient"
+
+

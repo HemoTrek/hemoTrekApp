@@ -42,7 +42,20 @@
             # A large button filling this bottom layout
             MDButton:
                 style: "elevated"
+                on_press: root.open_emergency_patients_screen()
+
+                MDButtonText:
+                    text: "Emergency"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.20
+            padding: "20dp"
+            spacing: "10dp"
+
+            # A large button filling this bottom layout
+            MDButton:
+                style: "elevated"
                 on_press: root.open_listPatients()
 
                 MDButtonText:
-                    text: "Run"
+                    text: "Oncology"
