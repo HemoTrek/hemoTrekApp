@@ -38,6 +38,12 @@ class helperPage(MDScreen):
         """
         self.manager.current = 'oncologyPatients'
 
+    def open_cleaning_screen(self):
+        """
+        Navigates to the cleaning instructions screen.
+        """
+        self.manager.current = 'cleaningScreen'
+
     def return_home(self):
         """
         Navigates back to the home screen.
