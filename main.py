@@ -37,6 +37,11 @@ def init_db():
 
 
 class MyApp(MDApp):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.username = "username"  # Instance attribute instead of class attribute
+
     def build(self):
         inspector.create_inspector(Window, self)
         self.title = 'HemoTrek'

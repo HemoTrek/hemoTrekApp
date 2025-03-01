@@ -90,7 +90,12 @@
         #LOGIN BUTTON
             MDButton:
                 style: "elevated"
-                on_press: root.open_test_type_screen()
+                on_press: 
+                    app.username = username.text
+                    print(app.username)                    
+                    root.open_test_type_screen()
+
+
                 pos_hint: {"center_x": 0.75}
     
                 MDButtonText:
