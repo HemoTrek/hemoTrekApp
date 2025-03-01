@@ -1,4 +1,5 @@
 from kivymd.uix.screen import MDScreen
+from kivy.app import App
 
 import socket
 
@@ -17,7 +18,6 @@ class helperPage(MDScreen):
         """
         This method is called when the 'Start Test' button is pressed.
         """
-        # self.manager.current = 'listPatients'
         self.manager.current = 'listPatients'
 
     def open_test_type_screen(self):
@@ -45,6 +45,15 @@ class helperPage(MDScreen):
         print("opening setup screen")
         print(*args)
         self.manager.current = 'setupScreen'
+    
+    def store_patient_and_open_setup_screen(self, instance, row):
+        """
+        Stores patient data and navigates to the setup instructions screen.
+        """
+        app = App.get_running_app()  # Get the current app instance
+        app.patient = row  # Store selected patient's name
+        print(f"Patient Selected: {app.patient}")
+        self.open_setup_screen(instance)
 
     def open_cleaning_screen(self):
         """

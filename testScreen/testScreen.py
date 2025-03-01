@@ -1,4 +1,12 @@
 from helperPage.helperPage import helperPage
+from kivy.app import App
+from kivy.uix.screenmanager import Screen
 
 class TestScreen(helperPage):
+    
+    def on_pre_enter(self, *args):
+        app = App.get_running_app()
+        self.ids.patientName_label.text = f"Results for {app.patient}"
+        print(f"Displaying Results for {app.patient}")
+
     pass

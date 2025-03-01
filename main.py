@@ -40,7 +40,8 @@ class MyApp(MDApp):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.username = "username"  # Instance attribute instead of class attribute
+        self.username = "[Username Not Entered]"  
+        self.patient = "[No Patient Data Entered]"
 
     def build(self):
         inspector.create_inspector(Window, self)

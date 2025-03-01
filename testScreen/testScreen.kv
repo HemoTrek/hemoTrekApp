@@ -8,9 +8,12 @@
             size_hint_x: 1.01
             pos_hint: {"center_x": .5, "center_y": .5}              
 
+
             MDTopAppBarTitle:
-                text: "Testing In Progress"
+                id: patientName_label
                 pos_hint: {"center_x": .5}
+
+
         
         # ---------------------------
         # Main Content Below
@@ -19,7 +22,20 @@
             orientation: "vertical"
             spacing: "20dp"
             padding: "20dp"
-            size_hint_y: 1
+            size_hint_y: 0.3
+
+            MDLabel:
+                test: "Results in progress"
+                font_style: "Display"
+                halign: "center"
+                spacing: "20dp"
+                padding: "20dp"
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            padding: "20dp"
+            size_hint_y: 0.5
 
             MDCircularProgressIndicator:
                 size_hint: None, None
@@ -27,23 +43,28 @@
                 color: "black"
                 pos_hint: {"center_x": .5, "center_y": .5}              
 
-            MDButton:
-                size_hint: None, None
-                size: ("150dp", "50dp")
-                pos_hint: {"center_x": .5, "center_y": .5}              
+            GridLayout:
+                cols: 2
+                padding: 20
+                spacing: 20
+                
+                MDButton:
+                    size_hint: None, None
+                    size: ("150dp", "50dp")
+                    pos_hint: {"center_x": .5, "center_y": .5}              
 
-                on_press: root.return_home()
+                    on_press: root.return_home()
 
-                MDButtonText:
-                    text: "CANCEL TEST"
+                    MDButtonText:
+                        text: "CANCEL TEST"
 
-            MDButton:
-                size_hint: None, None
-                size: ("150dp", "50dp")
-                pos_hint: {"center_x": .5, "center_y": .5}              
+                MDButton:
+                    size_hint: None, None
+                    size: ("150dp", "50dp")
+                    pos_hint: {"center_x": .5, "center_y": .5}              
 
-                on_press: root.open_cleaning_screen()
+                    on_press: root.open_cleaning_screen()
 
-                MDButtonText:
-                    text: "CLEANING SCREEN"            
-            
+                    MDButtonText:
+                        text: "CLEANING SCREEN"            
+                

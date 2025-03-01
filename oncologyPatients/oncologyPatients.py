@@ -43,7 +43,7 @@ class OncologyPatients(helperPage):
             # Middle column: the label
             content.add_widget(
                 MDLabel(
-                    text=f"ID: {row[0]}, Username: {row[1]}",
+                    text=f"ID: {row[0]}, Name: {row[1]}",
                     halign="center",
                     valign="middle",
                 )
@@ -56,7 +56,7 @@ class OncologyPatients(helperPage):
                     ),
                     size_hint=(None, None),
                     size=("100dp", "48dp"),
-                    on_press=self.open_setup_screen,
+                    on_press=lambda instance, patientName=row[1]: self.store_patient_and_open_setup_screen(instance, patientName),  # Pass the row (patient data)
                 )
             )
             
