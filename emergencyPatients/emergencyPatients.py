@@ -74,7 +74,7 @@ class EmergencyPatients(helperPage):
             )
 
     def get_all_users(self):
-        conn = sqlite3.connect('data/patients.db')
+        conn = sqlite3.connect('data/emergencyPatients.db')
         c = conn.cursor()
         c.execute("SELECT * FROM patientInfo;")
         rows = c.fetchall()
@@ -83,7 +83,7 @@ class EmergencyPatients(helperPage):
         return rows
     
     def clear_all_users(self):
-        conn = sqlite3.connect('data/patients.db')
+        conn = sqlite3.connect('data/emergencyPatients.db')
         c = conn.cursor()
         c.execute("DELETE FROM patientInfo;")
         conn.commit()

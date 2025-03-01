@@ -46,23 +46,23 @@
                 Label:
                     text: "Username:"
                     font_size: '32sp'
-                    halign: 'left'
+                    halign: 'right'
                     valign: 'middle'
                     text_size: self.size
 
                 TextInput:
-                    id: name
+                    id: username
                     font_size: '32sp'
 
                 Label:
                     text: "Password:"
                     font_size: '32sp'
-                    halign: 'left'
+                    halign: 'right'
                     valign: 'middle'
                     text_size: self.size
 
                 TextInput:
-                    id: name
+                    id: password
                     font_size: '32sp'
 
 
@@ -82,7 +82,7 @@
             MDButton:
                 style: "elevated"
                 on_press: root.open_cleaning_screen()
-                pos_hint: {"center_x": 0.75}
+                pos_hint: {"center_x": 0.25}
                 
                 MDButtonText:
                     text: "Clear"
@@ -91,8 +91,8 @@
             MDButton:
                 style: "elevated"
                 on_press: root.open_test_type_screen()
-                pos_hint: {"center_x": 0.25}
-
+                pos_hint: {"center_x": 0.75}
+    
                 MDButtonText:
                     text: "Login"
                     
