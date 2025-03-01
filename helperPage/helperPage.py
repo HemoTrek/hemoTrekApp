@@ -38,6 +38,14 @@ class helperPage(MDScreen):
         """
         self.manager.current = 'oncologyPatients'
 
+    def open_setup_screen(self, *args):
+        """
+        Navigates to the setup instructions screen.
+        """
+        print("opening setup screen")
+        print(*args)
+        self.manager.current = 'setupScreen'
+
     def open_cleaning_screen(self):
         """
         Navigates to the cleaning instructions screen.
@@ -72,7 +80,7 @@ class helperPage(MDScreen):
         self.manager.current = 'test'
 
    
-
+#Dont touch this - it's joeys stuff
     def select_emergency(self):
         """
         Navigates to the emergency patient list screen.

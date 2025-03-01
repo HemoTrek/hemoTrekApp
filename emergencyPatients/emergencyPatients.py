@@ -56,7 +56,7 @@ class EmergencyPatients(helperPage):
                     ),
                     size_hint=(None, None),
                     size=("100dp", "48dp"),
-                    on_press=self.start_test,
+                    on_press=self.open_setup_screen,
                 )
             )
             

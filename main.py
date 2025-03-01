@@ -14,6 +14,7 @@ from selectTestType.selectTestType import SelectTestType
 from emergencyPatients.emergencyPatients import EmergencyPatients
 from oncologyPatients.oncologyPatients import OncologyPatients
 from cleaningScreen.cleaningScreen import CleaningScreen
+from setupScreen.setupScreen import SetupScreen
 
 import sqlite3
 
@@ -49,6 +50,7 @@ class MyApp(MDApp):
         Builder.load_file("emergencyPatients/emergencyPatients.kv")
         Builder.load_file("oncologyPatients/oncologyPatients.kv")
         Builder.load_file("cleaningScreen/cleaningScreen.kv")
+        Builder.load_file("setupScreen/setupScreen.kv")
 
         
         self.theme_cls.theme_style = "Dark"  # or "Light"
@@ -65,6 +67,7 @@ class MyApp(MDApp):
         sm.add_widget(EmergencyPatients(name='emergencyPatients'))
         sm.add_widget(OncologyPatients(name='oncologyPatients'))
         sm.add_widget(CleaningScreen(name='cleaningScreen'))
+        sm.add_widget(SetupScreen(name='setupScreen'))
 
         return sm
 
