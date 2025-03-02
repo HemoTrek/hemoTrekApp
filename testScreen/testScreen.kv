@@ -47,7 +47,7 @@
                         size: "48dp", "48dp"
                         color: "black"
                         pos_hint: {"center_x": .5, "center_y": .5}  
-                        opacity: 1 #Initially visible
+                        opacity: 1 
 
                     # Label for "Hyperviscosity Number"
                     MDLabel:
@@ -55,6 +55,7 @@
                         halign: "center"
                         font_style: "Display"
                         color: "black"                   
+
 
                 #SERUM
                 MDBoxLayout:
@@ -71,13 +72,20 @@
                         color: "black"
                         halign: "center"
 
-                        
-
                     MDCircularProgressIndicator:
+                        id: serum_progress
                         size_hint: None, None
                         size: "48dp", "48dp"
-                        color: "grey"
+                        color: "black"
                         pos_hint: {"center_x": .5, "center_y": .5}  
+                        opacity: 1 
+
+                    # Label for "Hyperviscosity Number"
+                    MDLabel:
+                        id: serum_viscosity
+                        halign: "center"
+                        font_style: "Display"
+                        color: "black"         
 
             # One wide box underneath
             MDBoxLayout:
@@ -117,7 +125,17 @@
                     on_press: root.update_wholeblood_result()
 
                     MDButtonText:
-                        text: "Update Results"
+                        text: "Update Wholeblood"
+
+                MDButton:
+                    size_hint: None, None
+                    size: ("150dp", "50dp")
+                    pos_hint: {"center_x": .5, "center_y": .5}              
+                    #on_press: root.return_home()
+                    on_press: root.update_serum_result()
+
+                    MDButtonText:
+                        text: "Update Serum"
 
                 MDButton:
                     size_hint: None, None

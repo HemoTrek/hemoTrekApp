@@ -14,6 +14,10 @@ class TestScreen(helperPage):
         self.ids.wholeblood_viscosity.text = "#.## cP"
         self.ids.wholeblood_viscosity.color = (0,1,0,1)
 
+    def update_serum_result(self):
+        self.ids.serum_progress.color = (0,1,0,0)
+        self.ids.serum_viscosity.text = "#.## cP"
+        self.ids.serum_viscosity.color = (1,0,0,1)
 
 
     pass
