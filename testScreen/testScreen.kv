@@ -80,7 +80,7 @@
                         pos_hint: {"center_x": .5, "center_y": .5}  
                         opacity: 1 
 
-                    # Label for "Hyperviscosity Number"
+                    # Label for "Serum Viscosity"
                     MDLabel:
                         id: serum_viscosity
                         halign: "center"
@@ -101,10 +101,18 @@
                     halign: "left"
                 
                 MDCircularProgressIndicator:
+                    id: HVS_progress
                     size_hint: None, None
                     size: "48dp", "48dp"
                     color: "black"
                     pos_hint: {"center_x": .5, "center_y": .5}  
+                
+                # Label for "Hyperviscosity Number"
+                MDLabel:
+                    id: HVS_evaluation
+                    halign: "center"
+                    font_style: "Display"
+                    color: "black"         
 
         MDBoxLayout:
             orientation: "vertical"
@@ -121,7 +129,6 @@
                     size_hint: None, None
                     size: ("150dp", "50dp")
                     pos_hint: {"center_x": .5, "center_y": .5}              
-                    #on_press: root.return_home()
                     on_press: root.update_wholeblood_result()
 
                     MDButtonText:
@@ -131,11 +138,19 @@
                     size_hint: None, None
                     size: ("150dp", "50dp")
                     pos_hint: {"center_x": .5, "center_y": .5}              
-                    #on_press: root.return_home()
                     on_press: root.update_serum_result()
 
                     MDButtonText:
                         text: "Update Serum"
+
+                MDButton:
+                    size_hint: None, None
+                    size: ("150dp", "50dp")
+                    pos_hint: {"center_x": .5, "center_y": .5}              
+                    on_press: root.update_HVS_result()
+
+                    MDButtonText:
+                        text: "Update HVS"
 
                 MDButton:
                     size_hint: None, None

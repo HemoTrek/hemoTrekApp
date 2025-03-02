@@ -19,5 +19,10 @@ class TestScreen(helperPage):
         self.ids.serum_viscosity.text = "#.## cP"
         self.ids.serum_viscosity.color = (1,0,0,1)
 
+    def update_HVS_result(self):
+        self.ids.HVS_progress.color = (0,1,0,0)
+        self.ids.HVS_evaluation.text = "Abnormal"
+        self.ids.HVS_evaluation.color = (1,0,0,1)
+
 
     pass
