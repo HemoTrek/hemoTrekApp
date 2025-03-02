@@ -46,7 +46,8 @@ class MyApp(MDApp):
     def build(self):
         inspector.create_inspector(Window, self)
         self.title = 'HemoTrek'
-        self.icon = 'icons/Rhys.png'
+        self.icon = 'icons/aaaaa.jpg'
+        
         # Explicitly load the .kv files for each screen
         Builder.load_file("homeScreen/homeScreen.kv")
         Builder.load_file("testScreen/testScreen.kv")

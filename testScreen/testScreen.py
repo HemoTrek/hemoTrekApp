@@ -8,5 +8,12 @@ class TestScreen(helperPage):
         app = App.get_running_app()
         self.ids.patientName_label.text = f"Results for {app.patient}"
         print(f"Displaying Results for {app.patient}")
+   
+    def update_wholeblood_result(self):
+        self.ids.wholeblood_progress.color = (0,1,0,0)
+        self.ids.wholeblood_viscosity.text = "#.## cP"
+        self.ids.wholeblood_viscosity.color = (0,1,0,1)
+
+
 
     pass
