@@ -6,42 +6,88 @@
         MDTopAppBar:
             type: "small"
             size_hint_x: 1.01
-            pos_hint: {"center_x": .5, "center_y": .5}              
-
+            pos_hint: {"center_x": .5, "center_y": .5}  
 
             MDTopAppBarTitle:
                 id: patientName_label
-                pos_hint: {"center_x": .5}
+                halign: "center"
 
 
-        
-        # ---------------------------
-        # Main Content Below
-        # ---------------------------
+        # --------------------------- Main Content Below ---------------------------
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            padding: "20dp"
+            size_hint_y: 0.7  # Adjusting size
+
+            # Wholeblood and Serum boxes side by side
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: "20dp"
+                size_hint_y: 0.6  # Adjust height
+
+                #WHOLEBLOOD
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_x: 0.45
+                    size_hint_y: 1
+                    md_bg_color: 0.9, 0.9, 0.9, 1  # Light grey background
+                    padding: "20dp"
+                    radius: [20, 20, 20, 20]
+
+                    MDLabel:
+                        text: "Wholeblood Viscosity"
+                        color: "black"
+                        font: "Display"
+                        halign: "center"
+
+                    MDCircularProgressIndicator:
+                        size_hint: None, None
+                        size: "48dp", "48dp"
+                        color: "black"
+                        pos_hint: {"center_x": .5, "center_y": .5}  
+
+                #SERUM
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_x: 0.45
+                    size_hint_y: 1
+                    md_bg_color: 0.9, 0.9, 0.9, 1  
+                    padding: "20dp"
+                    radius: [20, 20, 20, 20]
+
+                    MDLabel:
+                        text: "Serum Viscosity"
+                        font: "Display"
+                        color: "black"
+                        halign: "center"
+
+                        
+
+                    MDCircularProgressIndicator:
+                        size_hint: None, None
+                        size: "48dp", "48dp"
+                        color: "grey"
+                        pos_hint: {"center_x": .5, "center_y": .5}  
+
+            # One wide box underneath
+            MDBoxLayout:
+                size_hint_y: 0.3  # Shorter than the top row
+                md_bg_color: 0.9, 0.9, 0.9, 1  
+                padding: "20dp"
+                radius: [20, 20, 20, 20]
+
+                MDCircularProgressIndicator:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    color: "black"
+                    pos_hint: {"center_x": .5, "center_y": .5}  
+
         MDBoxLayout:
             orientation: "vertical"
             spacing: "20dp"
             padding: "20dp"
             size_hint_y: 0.3
-
-            MDLabel:
-                test: "Results in progress"
-                font_style: "Display"
-                halign: "center"
-                spacing: "20dp"
-                padding: "20dp"
-
-        MDBoxLayout:
-            orientation: "vertical"
-            spacing: "20dp"
-            padding: "20dp"
-            size_hint_y: 0.5
-
-            MDCircularProgressIndicator:
-                size_hint: None, None
-                size: "48dp", "48dp"
-                color: "black"
-                pos_hint: {"center_x": .5, "center_y": .5}              
 
             GridLayout:
                 cols: 2
@@ -52,7 +98,6 @@
                     size_hint: None, None
                     size: ("150dp", "50dp")
                     pos_hint: {"center_x": .5, "center_y": .5}              
-
                     on_press: root.return_home()
 
                     MDButtonText:
@@ -62,9 +107,7 @@
                     size_hint: None, None
                     size: ("150dp", "50dp")
                     pos_hint: {"center_x": .5, "center_y": .5}              
-
                     on_press: root.open_cleaning_screen()
 
                     MDButtonText:
-                        text: "CLEANING SCREEN"            
-                
+                        text: "Proceed to Cleaning"

@@ -46,12 +46,12 @@ class helperPage(MDScreen):
         print(*args)
         self.manager.current = 'setupScreen'
     
-    def store_patient_and_open_setup_screen(self, instance, row):
+    def store_patient_and_open_setup_screen(self, instance, patient):
         """
         Stores patient data and navigates to the setup instructions screen.
         """
         app = App.get_running_app()  # Get the current app instance
-        app.patient = row  # Store selected patient's name
+        app.patient = patient  # Store selected patient's name
         print(f"Patient Selected: {app.patient}")
         self.open_setup_screen(instance)
 
