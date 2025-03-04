@@ -43,6 +43,7 @@ class MyApp(MDApp):
         super().__init__(**kwargs)
         self.username = "[Username Not Entered]"  
         self.patient = "[No Patient Data Entered]"
+        self.runsSinceLastService = 0
 
     def build(self):
         inspector.create_inspector(Window, self)

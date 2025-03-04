@@ -92,6 +92,32 @@ class helperPage(MDScreen):
         print("listPatientsScreen - Test Started")
         print(*args)
 
+        # Get the running app instance
+        app = App.get_running_app()
+
+        # Ensure runsSinceLastService exists
+        if not hasattr(app, "runsSinceLastService"):
+            app.runsSinceLastService = 0  # Initialize if it doesn't exist
+            print("runsSinceLastService variable was did not previously exist")
+
+        # Increase the number of runs since last service by 1
+        app.runsSinceLastService += 1
+
+        # Print the updated value
+        print(f"Runs since last service = {app.runsSinceLastService}")
+
+        # Update the label that displays runsSinceLastService
+        if hasattr(self.ids, "setup_steps"):
+            self.ids.setup_steps.clear_widgets()  # Refresh UI
+            self.ids.setup_steps.add_widget(MDLabel(
+                text=f"Runs Since Last Service: {app.runsSinceLastService}",
+                halign="center",
+                theme_text_color="Custom",
+                text_color=(0, 0, 0, 1),
+                size_hint_y=None,
+                height="50dp"
+            ))
+
         self.manager.current = 'test'
 
 

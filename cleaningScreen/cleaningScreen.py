@@ -40,7 +40,16 @@ class CleaningScreen(Screen):
             # Add the corresponding image below
             image = Image(source=f"icons/cleaningImage{index}.png", size_hint_y=None, height="150dp")
             self.ids.setup_steps.add_widget(image)
-   
+                # Display runsSinceLastService at the bottom
+        
+        app = App.get_running_app()  # Correctly retrieve the running app instance
+
+        if hasattr(app, "runsSinceLastService"):  # Ensure the attribute exists
+            self.ids.runs_since_last_service.text = f"Runs Since Last Service: {app.runsSinceLastService}"
+        else:
+            self.ids.runs_since_last_service.text = "Runs Since Last Service: 0"  # Fallback if attribute isn't set
+
+    
     def return_home(self):
         """
         Navigates back to the home screen.
@@ -54,7 +63,7 @@ class CleaningScreen(Screen):
         print("listPatientsScreen - Test Started")
         print(*args)
 
-        self.manager.current = 'test'        
+        self.manager.current = 'test'     
 
     def open_service_screen(self):
         """
