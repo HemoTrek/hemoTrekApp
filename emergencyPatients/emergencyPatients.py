@@ -29,7 +29,7 @@ class EmergencyPatients(helperPage):
             content = GridLayout(
                 cols=3,
                 size_hint_y=None,
-                height="60dp",    # adjust height as needed
+                height="80dp",    # adjust height as needed
                 padding="4dp",
             )
             # Left column: the icon button
@@ -43,7 +43,8 @@ class EmergencyPatients(helperPage):
             # Middle column: the label
             content.add_widget(
                 MDLabel(
-                    text=f"Checkin Time: {row[0]}, Username: {row[1]}",
+                    #text=f"Checkin Time: {row[0]}, Username: {row[1]}",
+                    text=f"{row[1]}", #Displays patient name
                     halign="center",
                     valign="middle",
                 )
@@ -56,6 +57,7 @@ class EmergencyPatients(helperPage):
                     ),
                     size_hint=(None, None),
                     size=("100dp", "48dp"),
+                    pos_hint={"center_y": 0.5},  # Center the button vertically
                     on_press=lambda instance, patientName=row[1]: self.store_patient_and_open_setup_screen(instance, patientName),  # Pass the row (patient data)
                 )
             )

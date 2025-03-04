@@ -29,7 +29,7 @@ class OncologyPatients(helperPage):
             content = GridLayout(
                 cols=3,
                 size_hint_y=None,
-                height="60dp",    # adjust height as needed
+                height="80dp",    # adjust height as needed
                 padding="4dp",
             )
             # Left column: the icon button
@@ -43,7 +43,9 @@ class OncologyPatients(helperPage):
             # Middle column: the label
             content.add_widget(
                 MDLabel(
-                    text=f"ID: {row[0]}, Name: {row[1]}",
+                    #text=f"ID: {row[0]}, Name: {row[1]}",
+                    text=f"{row[1]}", #Displays patient name
+
                     halign="center",
                     valign="middle",
                 )
