@@ -8,21 +8,21 @@ from kivymd.uix.scrollview import MDScrollView
 from kivy.uix.image import Image
 from kivymd.uix.boxlayout import MDBoxLayout
 
-class CleaningScreen(Screen):
+class ServiceScreen(Screen):
 
     def on_pre_enter(self, *args):
-        """Populate the cleaning instructions dynamically."""
-        setup_steps = [
-            "Open the door",
-            "Remove Capillary tubes",
-            "Remove the pipette tip",
+        """Populate the service instructions dynamically."""
+        service_steps = [
+            "Step 1: Watch out for the freaky ahh turtles",
+            "Step 2: Homophobia",
+            "Step 3: Profit",
             "Remove both microcentrifuge tubes",
             "Dispose of all products in their appropriate waste receptacles",
         ]
 
-        self.ids.setup_steps.clear_widgets()
+        #self.ids.service_steps.clear_widgets()
 
-        for index, step in enumerate(setup_steps, start=1):
+        for index, step in enumerate(service_steps, start=1):
             # Create a horizontal box for step description and checkbox
             step_layout = MDBoxLayout(orientation="horizontal", size_hint_y=None, height="50dp", md_bg_color = (1,1,1,1))
 
@@ -35,11 +35,11 @@ class CleaningScreen(Screen):
             step_layout.add_widget(checkbox)
 
             # Add the step layout to the list
-            self.ids.setup_steps.add_widget(step_layout)
+            self.ids.service_steps.add_widget(step_layout)
 
             # Add the corresponding image below
-            image = Image(source=f"icons/cleaningImage{index}.png", size_hint_y=None, height="150dp")
-            self.ids.setup_steps.add_widget(image)
+            image = Image(source=f"icons/serviceImage{index}.png", size_hint_y=None, height="150dp")
+            self.ids.service_steps.add_widget(image)
    
     def return_home(self):
         """
@@ -47,17 +47,8 @@ class CleaningScreen(Screen):
         """
         self.manager.current = 'home'
 
-    def start_test(self, *args):
+    def open_cleaning_screen(self):
         """
-        This method is called when the 'Start Test' button is pressed.
+        Navigates to the cleaning instructions screen.
         """
-        print("listPatientsScreen - Test Started")
-        print(*args)
-
-        self.manager.current = 'test'        
-
-    def open_service_screen(self):
-        """
-        Navigates to the service instructions screen.
-        """
-        self.manager.current = 'serviceScreen'
+        self.manager.current = 'cleaningScreen'

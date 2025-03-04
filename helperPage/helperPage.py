@@ -60,6 +60,12 @@ class helperPage(MDScreen):
         Navigates to the cleaning instructions screen.
         """
         self.manager.current = 'cleaningScreen'
+    
+    def open_service_screen(self):
+        """
+        Navigates to the service instructions screen.
+        """
+        self.manager.current = 'serviceScreen'
 
     def return_home(self):
         """

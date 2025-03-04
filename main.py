@@ -15,6 +15,7 @@ from emergencyPatients.emergencyPatients import EmergencyPatients
 from oncologyPatients.oncologyPatients import OncologyPatients
 from cleaningScreen.cleaningScreen import CleaningScreen
 from setupScreen.setupScreen import SetupScreen
+from serviceScreen.serviceScreen import ServiceScreen
 
 import sqlite3
 
@@ -59,8 +60,9 @@ class MyApp(MDApp):
         Builder.load_file("oncologyPatients/oncologyPatients.kv")
         Builder.load_file("cleaningScreen/cleaningScreen.kv")
         Builder.load_file("setupScreen/setupScreen.kv")
-
+        Builder.load_file("serviceScreen/serviceScreen.kv")
         
+
         self.theme_cls.theme_style = "Dark"  # or "Light"
         self.theme_cls.primary_palette = "Lavenderblush"
 
@@ -76,6 +78,7 @@ class MyApp(MDApp):
         sm.add_widget(OncologyPatients(name='oncologyPatients'))
         sm.add_widget(CleaningScreen(name='cleaningScreen'))
         sm.add_widget(SetupScreen(name='setupScreen'))
+        sm.add_widget(ServiceScreen(name='serviceScreen'))
 
         return sm
 

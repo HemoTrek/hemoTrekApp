@@ -1,7 +1,7 @@
-<CleaningScreen>:
+<ServiceScreen>:
     MDBoxLayout:
         orientation: 'vertical'
-        md_bg_color: 1, 0, 1, 1
+        md_bg_color: "brown"
 
         MDTopAppBar:
             type: "small"
@@ -14,7 +14,7 @@
                     on_press: root.return_home()    
 
             MDTopAppBarTitle:
-                text: "CLEANING INSTRUCTIONS"
+                text: "SERVICE INSTRUCTIONS"
                 pos_hint: {"center_x": .5}
 
         # ----------------------------------
@@ -23,7 +23,7 @@
         ScrollView:
             size_hint_y: 0.8
             MDList:
-                id: setup_steps
+                id: service_steps
                 padding: "20dp"  # Padding around the list
                 spacing: "10dp"  # Space between each step
                 
@@ -38,12 +38,12 @@
 
             MDButton:
                 style: "elevated"
-                on_press: root.start_test()
+                on_press: root.open_cleaning_screen()
                 size_hint_x: 0.3
                 size_hint_y: 0.3
                
                 MDButtonText:
-                    text: "Back to Results"
+                    text: "Back to Cleaning Screen"
 
 
             MDButton:
@@ -54,12 +54,3 @@
 
                 MDButtonText:
                     text: "COMPLETE"
-
-            MDButton:
-                style: "elevated"
-                on_press: root.open_service_screen()
-                size_hint_x: 0.3
-                size_hint_y: 0.3
-
-                MDButtonText:
-                    text: "SERVICE"
