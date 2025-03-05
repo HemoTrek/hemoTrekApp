@@ -10,6 +10,12 @@ from testScreen.testScreen import TestScreen
 from settingsScreen.settingsScreen import SettingsScreen
 from listPatientsScreen.listPatientsScreen import listPatientsScreen
 from addPatient.addPatient import AddPatient
+from selectTestType.selectTestType import SelectTestType
+from emergencyPatients.emergencyPatients import EmergencyPatients
+from oncologyPatients.oncologyPatients import OncologyPatients
+from cleaningScreen.cleaningScreen import CleaningScreen
+from setupScreen.setupScreen import SetupScreen
+from serviceScreen.serviceScreen import ServiceScreen
 
 import sqlite3
 
@@ -32,16 +38,32 @@ def init_db():
 
 
 class MyApp(MDApp):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.username = "[Username Not Entered]"  
+        self.patient = "[No Patient Data Entered]"
+        self.runsSinceLastService = 0
+
     def build(self):
         inspector.create_inspector(Window, self)
-
+        self.title = 'HemoTrek'
+        self.icon = 'icons/aaaaa.jpg'
+        
         # Explicitly load the .kv files for each screen
         Builder.load_file("homeScreen/homeScreen.kv")
         Builder.load_file("testScreen/testScreen.kv")
         Builder.load_file("settingsScreen/settingsScreen.kv")
         Builder.load_file("listPatientsScreen/listPatientsScreen.kv")
         Builder.load_file("addPatient/addPatient.kv")
+        Builder.load_file("selectTestType/selectTestType.kv")
+        Builder.load_file("emergencyPatients/emergencyPatients.kv")
+        Builder.load_file("oncologyPatients/oncologyPatients.kv")
+        Builder.load_file("cleaningScreen/cleaningScreen.kv")
+        Builder.load_file("setupScreen/setupScreen.kv")
+        Builder.load_file("serviceScreen/serviceScreen.kv")
         
+
         self.theme_cls.theme_style = "Dark"  # or "Light"
         self.theme_cls.primary_palette = "Lavenderblush"
 
@@ -52,6 +74,13 @@ class MyApp(MDApp):
         sm.add_widget(SettingsScreen(name='settings'))
         sm.add_widget(listPatientsScreen(name='listPatients'))
         sm.add_widget(AddPatient(name='addPatient'))
+        sm.add_widget(SelectTestType(name='selectTestType'))
+        sm.add_widget(EmergencyPatients(name='emergencyPatients'))
+        sm.add_widget(OncologyPatients(name='oncologyPatients'))
+        sm.add_widget(CleaningScreen(name='cleaningScreen'))
+        sm.add_widget(SetupScreen(name='setupScreen'))
+        sm.add_widget(ServiceScreen(name='serviceScreen'))
+
         return sm
 
 if __name__ == "__main__":

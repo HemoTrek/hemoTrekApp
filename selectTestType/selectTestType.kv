@@ -1,0 +1,74 @@
+<SelectTestType>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 0, 0, 1, 1
+
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1.01
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+
+            MDTopAppBarLeadingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "home"
+                    on_press: root.return_home()    
+
+
+            MDTopAppBarTitle:
+                text: "Test Type Selection"
+                pos_hint: {"center_x": .5}
+
+    
+            MDTopAppBarTrailingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "tune"
+                    on_press: root.open_settings()
+
+
+        # ----------------------------------
+        # MIDDLE SECTION (1/2 of leftover space)
+        # ----------------------------------
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.5
+            padding: "20dp"
+            spacing: "10dp"
+
+            MDLabel:
+                id: welcome_label
+                font_style: "Display"
+                halign: "center"
+                size_hint_y: 0.33
+                spacing: "20dp"
+                padding: "20dp"
+
+        # ----------------------------------
+        # BOTTOM SECTION (1/2 of leftover space)
+        # ----------------------------------
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.5
+            padding: "20dp"
+            spacing: "10dp"
+
+            MDButton:
+                style: "elevated"
+                on_press: root.open_emergency_patients_screen()
+                size_hint_x: 0.3
+                size_hint_y: 0.3
+               
+                MDButtonText:
+                    text: "Emergency"
+
+
+            MDButton:
+                style: "elevated"
+                on_press: root.open_oncology_patients_screen()
+                size_hint_x: 0.3
+                size_hint_y: 0.3
+
+                MDButtonText:
+                    text: "Oncology"

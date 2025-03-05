@@ -8,7 +8,7 @@ class AddPatient(helperPage):
         """
         Insert a new user (patient) into the `patientInfo` table.
         """
-        conn = sqlite3.connect('data/patients.db')
+        conn = sqlite3.connect('data/oncologyPatients.db')
         c = conn.cursor()
         c.execute(
             "INSERT INTO patientInfo (name) VALUES (?)", 
