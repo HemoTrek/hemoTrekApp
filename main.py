@@ -42,6 +42,7 @@ class MyApp(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.username = "[Username Not Entered]"  
+        self.password = "[Password Not Entered]"  
         self.patient = "[No Patient Data Entered]"
         self.runsSinceLastService = 0
 
@@ -64,7 +65,7 @@ class MyApp(MDApp):
         Builder.load_file("serviceScreen/serviceScreen.kv")
         
 
-        self.theme_cls.theme_style = "Dark"  # or "Light"
+        self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "Lavenderblush"
 
         # Create the ScreenManager and add screens
