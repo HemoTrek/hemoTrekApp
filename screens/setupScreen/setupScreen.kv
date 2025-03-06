@@ -1,0 +1,53 @@
+<SetupScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.primaryColor        
+
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1.01
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "home"
+                    on_press: root.return_home()    
+
+            MDTopAppBarTitle:
+                text: "SETUP INSTRUCTIONS"
+                pos_hint: {"center_x": .5}
+
+        # ----------------------------------
+        # SCROLLABLE INSTRUCTIONS SECTION
+        # ----------------------------------
+        ScrollView:
+            size_hint_y: 0.8
+            MDList:
+                id: setup_steps
+                padding: "20dp"  # Padding around the list
+                spacing: "10dp"  # Space between each step
+                
+        # ----------------------------------
+        # BOTTOM SECTION (Buttons)
+        # ----------------------------------
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.2
+            padding: "20dp"
+            spacing: "10dp"
+
+            MDButton:
+                style: "elevated"
+                on_press: root.return_home()
+                size_hint_x: 0.3
+                size_hint_y: 0.3
+                MDButtonText:
+                    text: "Home"
+
+            MDButton:
+                style: "elevated"
+                on_press: root.start_test()
+                size_hint_x: 0.3
+                size_hint_y: 0.3
+                MDButtonText:
+                    text: "Run Test"
