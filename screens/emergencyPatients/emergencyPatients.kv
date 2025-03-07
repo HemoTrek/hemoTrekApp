@@ -23,26 +23,24 @@
                 MDActionTopAppBarButton:
                     icon: "refresh"
                     on_press: root.on_enter()
-
         # ----------------------------------------
-        # SCROLLABLE AREA
+        # Patient AREA
         # ----------------------------------------
-        ScrollView:
-            size_hint_y: 0.75
-            # If you also want horizontal scroll, set do_scroll_x: True
-            do_scroll_x: False
-            do_scroll_y: True
+    
+        RecycleView:
+            id: recycle_view
+            viewclass: "PatientInfoCard"
+            scroll_type: ["bars", "content"]
+            bar_width: dp(10)
 
-            MDBoxLayout:
-                id: user_box
-                orientation: "vertical"
-                spacing: "10dp"
-                padding: "10dp"
-
-                # The crucial part: let it size itself vertically (None)
-                # and grow with content
+            RecycleGridLayout:
+                cols: 3
+                default_size: None, dp(150)
+                default_size_hint: 1, None
                 size_hint_y: None
                 height: self.minimum_height
+                spacing: dp(10)
+                padding: dp(10)
 
         MDBoxLayout:
             orientation: "horizontal"
