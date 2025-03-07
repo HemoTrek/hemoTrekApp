@@ -1,88 +1,35 @@
-from screens.helperPage.helperPage import helperPage
+import json
+import os
+
 from kivy.app import App
-from kivy.uix.screenmanager import Screen
-from kivy.uix.boxlayout import BoxLayout
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.label import MDLabel
 from kivymd.uix.scrollview import MDScrollView
 from kivy.uix.image import Image
 from kivymd.uix.boxlayout import MDBoxLayout
 
-class SetupScreen(Screen):
+from screens.helperPage.helperPage import helperPage
+from screens.helperPage.instructionCard import InstructionsCard
+
+class SetupScreen(helperPage):
 
     def on_pre_enter(self, *args):
-        """Populate the setup instructions dynamically."""
-        setup_steps = [
-            "Ensure both tubes are inserted into each buckle such that the two red lines are visible from both the top and the bottom.",
-            "Ensure that both buckles are securely clasped to each support.",
-            "Double check that the clasps on the cylinders are secure.",
-            "Ensure the sterilization container fluid is above the minimum level marking.",
-            "Ensure the maximum fill line in the waste reservoir is still visible. If you cannot see the maximum line, then empty the reservoir.",
-            "Place one blood sample in the wholeblood holder. Ensure the lid of the microcentrifuge tube is closed properly.",
-            "Place the other sample in the designated slot within the centrifuge. Ensure the lid of the microcentrifuge tube is closed properly. Close the lid of the centrifuge.",
-            "Insert a new pipette tip.",
-            "Close the door securely.",
-            "Double check that there are no alerts on the screen.",
-        ]
+
+        json_path = os.path.join(os.path.dirname(__file__), "setupInstuctions.json")
+        try:
+            with open(json_path, "r") as f:
+                data = json.load(f)
+            instructions = data.get("setup_instructions", [])
+        except Exception as e:
+            # Fallback to an empty list if the file cannot be read
+            print(f"Error loading setup instructions: {e}")
+            instructions = []
 
         self.ids.setup_steps.clear_widgets()
 
-        for index, step in enumerate(setup_steps, start=1):
-            # Create a horizontal box for step description and checkbox
-            step_layout = MDBoxLayout(orientation="horizontal", size_hint_y=None, height="50dp", md_bg_color = (1,1,1,1))
-
-            # Step description (75% of width)
-            step_text = MDLabel(text=step, size_hint_x=0.75, halign="left", theme_text_color="Custom", text_color=(0,0,0,1))
-            step_layout.add_widget(step_text)
-
-            # Checkbox (25% of width)
-            checkbox = MDCheckbox(size_hint_x=0.25, pos_hint={"center_y": 0.5}, color_active=(0, 0, 0, 1))
-            step_layout.add_widget(checkbox)
-
-            # Add the step layout to the list
-            self.ids.setup_steps.add_widget(step_layout)
-
-            # Add the corresponding image below
-            image = Image(source=f"icons/setupImage{index}.png", size_hint_y=None, height="150dp")
-            self.ids.setup_steps.add_widget(image)
-   
-    def return_home(self):
-        """
-        Navigates back to the home screen.
-        """
-        self.manager.current = 'home'
-
-    def start_test(self, *args):
-        """
-        This method is called when the 'Start Test' button is pressed.
-        """
-        print("listPatientsScreen - Test Started")
-        print(*args)
-
-        # Get the running app instance
-        app = App.get_running_app()
-
-        # Ensure runsSinceLastService exists
-        if not hasattr(app, "runsSinceLastService"):
-            app.runsSinceLastService = 0  # Initialize if it doesn't exist
-            print("runsSinceLastService variable was did not previously exist")
-
-        # Increase the number of runs since last service by 1
-        app.runsSinceLastService += 1
-
-        # Print the updated value
-        print(f"Runs since last service = {app.runsSinceLastService}")
-
-        # Update the label that displays runsSinceLastService
-        if hasattr(self.ids, "setup_steps"):
-            self.ids.setup_steps.clear_widgets()  # Refresh UI
-            self.ids.setup_steps.add_widget(MDLabel(
-                text=f"Runs Since Last Service: {app.runsSinceLastService}",
-                halign="center",
-                theme_text_color="Custom",
-                text_color=(0, 0, 0, 1),
-                size_hint_y=None,
-                height="50dp"
-            ))
-
-        self.manager.current = 'test'
+        for step in instructions:
+            card = InstructionsCard(
+                instruction_text=step.get("instruction", "No instruction provided"),
+                image_source=step.get("image", "")
+            )
+            self.ids.setup_steps.add_widget(card)

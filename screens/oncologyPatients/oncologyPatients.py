@@ -2,11 +2,11 @@ from kivy.uix.gridlayout import GridLayout
 from kivymd.uix.button import MDButton, MDIconButton, MDButtonText
 from kivymd.uix.label import MDLabel
 from kivymd.uix.card import MDCard
-from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.card import MDCard
 
 from screens.helperPage.helperPage import helperPage
+
 
 import sqlite3
 
@@ -72,6 +72,7 @@ class OncologyPatients(helperPage):
                     height=content.height,
                 )
             )
+
 
     def get_all_users(self):
         conn = sqlite3.connect('data/appData.db')

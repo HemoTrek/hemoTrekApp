@@ -8,20 +8,21 @@
         # ----------------------------------
         
         FitImage:
-            source: "icons/hemoTrekLogoFinal.png"
-            size_hint_y: 0.50
+            source: "icons/hemoTrekLogo.png"
+            size_hint_x: 0.8
+            size_hint_y: 0.40
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
             allow_stretch: True
             keep_ratio: True
-            padding: "20dp"
 
         # ----------------------------------
         # MIDDLE SECTION (1/3 of leftover space)
         # ----------------------------------
 
         MDCard:
+            id: loginCard
             orientation: "vertical"
-            size_hint: (None, None)
-            size: ("300dp", "220dp")
+            size_hint: (0.6, 0.6)
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
             padding: dp(20)
             spacing: dp(20)
@@ -30,16 +31,19 @@
 
             MDTextField:
                 id: username
-                hint_text: "Username or Email"
-                helper_text: "Enter your username or email"
                 helper_text_mode: "on_focus"
-                icon_right: "account"
+                MDTextFieldHintText:
+                    text: "Enter Username or Email"
+                MDTextFieldTrailingIcon:
+                    icon: "account"
 
             MDTextField:
                 id: password
-                hint_text: "Password"
                 password: True
-                icon_right: "key"
+                MDTextFieldHintText:
+                    text: "Enter Password"
+                MDTextFieldTrailingIcon:
+                    icon: "key"
 
             MDButton:
                 style: "elevated"
@@ -63,11 +67,19 @@
             padding: "20dp"
             spacing: "10dp"
 
-            MDButton:
-                style: "elevated"
-                on_press: root.open_cleaning_screen()
-                pos_hint: {"center_x": 0.25}
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
                 
-                MDButtonText:
-                    text: "Cleaning Instructions"
+                MDButton:
+                    style: "elevated"
+                    theme_width: "Custom"
+
+                    height: "256"
+                    size_hint_x: .5
+
+                    on_press: root.open_cleaning_screen()
+                    
+                    MDButtonText:
+                        text: "Cleaning Instructions"
 

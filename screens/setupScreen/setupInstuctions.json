@@ -1,0 +1,44 @@
+{
+  "setup_instructions": [
+    {
+      "instruction": "Ensure both tubes are inserted into each buckle such that the two red lines are visible from both the top and the bottom.",
+      "image": "images/setupImages/setupImage1.png"
+    },
+    {
+      "instruction": "Ensure that both buckles are securely clasped to each support.",
+      "image": "images/setupImages/setupImage2.png"
+    },
+    {
+      "instruction": "Double check that the clasps on the cylinders are secure.",
+      "image": "images/setupImages/setupImage3.png"
+    },
+    {
+      "instruction": "Ensure the sterilization container fluid is above the minimum level marking.",
+      "image": "images/setupImages/setupImage4.png"
+    },
+    {
+      "instruction": "Ensure the maximum fill line in the waste reservoir is still visible. If you cannot see the maximum line, then empty the reservoir.",
+      "image": "images/setupImages/setupImage5.png"
+    },
+    {
+      "instruction": "Place one blood sample in the wholeblood holder. Ensure the lid of the microcentrifuge tube is closed properly.",
+      "image": "images/setupImages/setupImage6.png"
+    },
+    {
+      "instruction": "Place the other sample in the designated slot within the centrifuge. Ensure the lid of the microcentrifuge tube is closed properly. Close the lid of the centrifuge.",
+      "image": "images/setupImages/setupImage7.png"
+    },
+    {
+      "instruction": "Insert a new pipette tip.",
+      "image": "images/setupImages/setupImage8.png"
+    },
+    {
+      "instruction": "Close the door securely.",
+      "image": "images/setupImages/setupImage9.png"
+    },
+    {
+      "instruction": "Double check that there are no alerts on the screen.",
+      "image": "images/setupImages/setupImage10.png"
+    }
+  ]
+}

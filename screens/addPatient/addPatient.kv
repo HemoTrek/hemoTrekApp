@@ -3,68 +3,53 @@
         orientation: 'vertical'
         md_bg_color: app.theme_cls.primaryColor
 
+        # Top App Bar with fixed height
         MDTopAppBar:
             type: "small"
-            size_hint_x: 1.01
-            pos_hint: {"center_x": .5, "center_y": .5}
-
+            size_hint_y: None
+            height: dp(56)
             MDTopAppBarTitle:
                 text: "Add Patient"
-                pos_hint: {"center_x": .5}
-
             MDTopAppBarTrailingButtonContainer:
-
                 MDActionTopAppBarButton:
                     icon: "home"
                     on_press: root.return_home()
 
-        # ----------------------------------------------------
-        # Scrollable Area for Main Settings
-        # ----------------------------------------------------
-        ScrollView:
-            do_scroll_x: False
-            do_scroll_y: True
+        # Middle area: takes up all available space
+        AnchorLayout:
+            size_hint_y: 1
+            MDCard:
+                orientation: "vertical"
+                size_hint: (None, None)
+                size: ("300dp", "220dp")
+                padding: dp(20)
+                spacing: dp(20)
+                radius: dp(12)
+                elevation: 4
 
-            GridLayout:
-                cols: 2
-                padding: 20
-                spacing: 20
-
-                Label:
-                    text: "Name:"
-                    font_size: '32sp'
-                    halign: 'left'
-                    valign: 'middle'
-                    text_size: self.size
-
-                TextInput:
+                MDTextField:
                     id: name
-                    font_size: '32sp'
+                    helper_text_mode: "on_focus"
+                    MDTextFieldHintText:
+                        text: "Enter Patients Name"
 
+                MDButton:
+                    style: "elevated"
+                    on_press: root.save_changes(name.text)
+                    pos_hint: {"center_x": 0.5}
+                    MDButtonText:
+                        text: "Save"
 
-        # ----------------------------------------------------
-        # Bottom Bar for Buttons (Save / Return Home)
-        # ----------------------------------------------------
+        # Bottom Bar with fixed height
         BoxLayout:
             size_hint_y: None
-            height: 60
+            height: dp(60)
             padding: [20, 10]
             spacing: 20
 
             MDButton:
                 style: "elevated"
-                width: 150
-
-                on_press: root.save_changes(name.text)
-                
-                MDButtonText:
-                    text: "Save"
-
-            MDButton:
-                style: "elevated"
-                width: 150
-
+                width: dp(150)
                 on_press: root.return_to_patients()
-
                 MDButtonText:
                     text: "Return to Patients"

@@ -1,4 +1,5 @@
 from kivymd.uix.screen import MDScreen
+from kivymd.uix.label import MDLabel
 from kivy.app import App
 
 import socket
@@ -89,7 +90,6 @@ class helperPage(MDScreen):
         """
         This method is called when the 'Start Test' button is pressed.
         """
-        print("listPatientsScreen - Test Started")
         print(*args)
 
         # Get the running app instance

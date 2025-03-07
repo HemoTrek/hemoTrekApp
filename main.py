@@ -90,16 +90,16 @@ class MyApp(MDApp):
         return sm
 
 if __name__ == "__main__":
-    server = PersistentServer(HOST, PORT)
-    server.start()
+    # server = PersistentServer(HOST, PORT)
+    # server.start()
     
-    # Keep the server running
-    try:
-        while True:
-            pass
-    except KeyboardInterrupt:
-        print("Shutting down server...")
-        server.stop()
+    # # Keep the server running
+    # try:
+    #     while True:
+    #         pass
+    # except KeyboardInterrupt:
+    #     print("Shutting down server...")
+    #     server.stop()
 
     init_db()
     MyApp().run()
