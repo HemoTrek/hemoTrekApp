@@ -8,7 +8,6 @@ from kivy.modules import inspector
 from screens.login.login import Login
 from screens.testScreen.testScreen import TestScreen
 from screens.settingsScreen.settingsScreen import SettingsScreen
-from screens.listPatientsScreen.listPatientsScreen import listPatientsScreen
 from screens.addPatient.addPatient import AddPatient
 from screens.selectTestType.selectTestType import SelectTestType
 from screens.emergencyPatients.emergencyPatients import EmergencyPatients
@@ -63,7 +62,6 @@ class MyApp(MDApp):
         Builder.load_file("screens/login/login.kv")
         Builder.load_file("screens/testScreen/testScreen.kv")
         Builder.load_file("screens/settingsScreen/settingsScreen.kv")
-        Builder.load_file("screens/listPatientsScreen/listPatientsScreen.kv")
         Builder.load_file("screens/addPatient/addPatient.kv")
         Builder.load_file("screens/selectTestType/selectTestType.kv")
         Builder.load_file("screens/emergencyPatients/emergencyPatients.kv")
@@ -78,7 +76,6 @@ class MyApp(MDApp):
         sm.add_widget(Login(name='home'))
         sm.add_widget(TestScreen(name='test'))
         sm.add_widget(SettingsScreen(name='settings'))
-        sm.add_widget(listPatientsScreen(name='listPatients'))
         sm.add_widget(AddPatient(name='addPatient'))
         sm.add_widget(SelectTestType(name='selectTestType'))
         sm.add_widget(EmergencyPatients(name='emergencyPatients'))

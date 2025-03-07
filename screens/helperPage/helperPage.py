@@ -73,12 +73,15 @@ class helperPage(MDScreen):
         Navigates back to the home screen.
         """
         self.manager.current = 'home'
-
+    
     def add_patient(self):
-        """
-        This method is called when the 'Start Test' button is pressed.
-        """
-        self.manager.current = 'addPatient'
+        # Get the addPatient screen instance
+        add_patient_screen = self.manager.get_screen("addPatient")
+        # Store the current screen name as the return destination.
+        add_patient_screen.return_page = self.manager.current
+        # Switch to the addPatient screen.
+        self.manager.current = "addPatient"
+
     
     def return_to_patients(self):
         """
