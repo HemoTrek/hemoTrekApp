@@ -75,11 +75,13 @@
                     style: "elevated"
                     theme_width: "Custom"
 
-                    height: "256"
-                    size_hint_x: .5
+                    height: "128"
+                    size_hint_x: 0.4
 
                     on_press: root.open_cleaning_screen()
                     
                     MDButtonText:
                         text: "Cleaning Instructions"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        font_style: "Title"
 

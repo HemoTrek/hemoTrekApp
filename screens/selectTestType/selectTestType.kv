@@ -48,8 +48,6 @@
             # ----------------------------------
             MDBoxLayout:
                 orientation: "horizontal"
-                padding: "20dp"
-                spacing: "10dp"
 
                 MDLabel:
                     id: welcome_label
@@ -61,26 +59,39 @@
             # ----------------------------------
             # BOTTOM SECTION (1/2 of leftover space)
             # ----------------------------------
-            MDBoxLayout:
-                orientation: "horizontal"
-                size_hint_y: 0.5
-                padding: "20dp"
-                spacing: "10dp"
 
-                MDButton:
-                    style: "elevated"
-                    on_press: root.open_emergency_patients_screen()
-                    size_hint_x: 0.3
-                    size_hint_y: 0.3
-                
-                    MDButtonText:
-                        text: "Emergency"
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                size_hint_y: 0.5  # adjust as needed
 
-                MDButton:
-                    style: "elevated"
-                    on_press: root.open_oncology_patients_screen()
-                    size_hint_x: 0.3
-                    size_hint_y: 0.3
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    spacing: "10dp"
+                    size_hint: None, None
+                    height: "128dp"
+                    width: self.minimum_width  # automatically set the width based on its children
 
-                    MDButtonText:
-                        text: "Oncology"
+                    MDButton:
+                        style: "elevated"
+                        theme_width: "Custom"
+                        size_hint_x: None
+                        width: "150dp"
+                        height: "128dp"
+                        on_press: root.open_emergency_patients_screen()
+
+                        MDButtonText:
+                            text: "Emergency"
+                            font_style: "Title"        
+
+                    MDButton:
+                        style: "elevated"
+                        theme_width: "Custom"
+                        size_hint_x: None
+                        width: "150dp"
+                        height: "128dp"
+                        on_press: root.open_oncology_patients_screen()
+
+                        MDButtonText:
+                            text: "Oncology"
+                            font_style: "Title"    
