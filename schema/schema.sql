@@ -6,7 +6,7 @@
 CREATE TABLE IF NOT EXISTS patientInfo (
     patientID INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    department TEXT CHECK(department IN ('oncology', 'emergency')),
+    department TEXT CHECK(department IN ('Oncology', 'Emergency')),
     dateOfBirth TEXT,      -- ISO-8601 format (YYYY-MM-DD)
     notes TEXT             -- any extra patient info or remarks
 );
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS testResults (
     testName TEXT NOT NULL,
     
     -- Department must be either 'oncology' or 'emergency'
-    department TEXT CHECK(department IN ('oncology', 'emergency')),
+    department TEXT CHECK(department IN ('Oncology', 'Emergency')),
     
     -- Viscosity values are stored as floats
     serumViscosity REAL,
