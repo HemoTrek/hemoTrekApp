@@ -1,0 +1,25 @@
+{
+    "service_instructions": [
+      {
+        "instruction": "Step 1: Watch out for the freaky ahh turtles",
+        "image": "images/serviceImages/serviceImage1.png"
+      },
+      {
+        "instruction": "Step 2: Homophobia",
+        "image": "images/serviceImages/serviceImage2.png"
+      },
+      {
+        "instruction": "Step 3: Profit",
+        "image": "images/serviceImages/serviceImage3.png"
+      },
+      {
+        "instruction": "Remove both microcentrifuge tubes",
+        "image": "images/serviceImages/serviceImage3.png"
+      },
+      {
+        "instruction": "Dispose of all products in their appropriate waste receptacles",
+        "image": "images/serviceImages/serviceImage3.png"
+      }
+    ]
+  }
+  

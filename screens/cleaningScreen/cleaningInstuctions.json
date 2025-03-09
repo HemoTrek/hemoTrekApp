@@ -1,0 +1,25 @@
+{
+    "cleaning_instructions": [
+      {
+        "instruction": "Open the door",
+        "image": "images/cleaningImages/cleaningImage1.png"
+      },
+      {
+        "instruction": "Remove Capillary tubes",
+        "image": "images/cleaningImages/cleaningImage2.png"
+      },
+      {
+        "instruction": "Remove the pipette tip",
+        "image": "images/cleaningImages/cleaningImage3.png"
+      },
+      {
+        "instruction": "Remove both microcentrifuge tubes",
+        "image": "images/cleaningImages/cleaningImage4.png"
+      },
+      {
+        "instruction": "Dispose of all products in their appropriate waste receptacles",
+        "image": "images/cleaningImages/cleaningImage5.png"
+      }
+    ]
+  }
+  

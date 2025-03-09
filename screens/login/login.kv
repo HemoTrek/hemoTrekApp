@@ -1,0 +1,87 @@
+<Login>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.primaryColor        
+
+        # ----------------------------------
+        # TOP SECTION (1/3 of leftover space)
+        # ----------------------------------
+        
+        FitImage:
+            source: "icons/hemoTrekLogo.png"
+            size_hint_x: 0.8
+            size_hint_y: 0.40
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            allow_stretch: True
+            keep_ratio: True
+
+        # ----------------------------------
+        # MIDDLE SECTION (1/3 of leftover space)
+        # ----------------------------------
+
+        MDCard:
+            id: loginCard
+            orientation: "vertical"
+            size_hint: (0.6, 0.6)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            padding: dp(20)
+            spacing: dp(20)
+            radius: dp(12)
+            elevation: 4
+
+            MDTextField:
+                id: username
+                helper_text_mode: "on_focus"
+                MDTextFieldHintText:
+                    text: "Enter Username or Email"
+                MDTextFieldTrailingIcon:
+                    icon: "account"
+
+            MDTextField:
+                id: password
+                password: True
+                MDTextFieldHintText:
+                    text: "Enter Password"
+                MDTextFieldTrailingIcon:
+                    icon: "key"
+
+            MDButton:
+                style: "elevated"
+                on_press: 
+                    app.username = username.text
+                    app.password = password.text
+
+                    root.open_test_type_screen()
+
+                pos_hint: {"center_x": 0.5}
+
+                MDButtonText:
+                    text: "Sign In"
+
+        # ----------------------------------
+        # BOTTOM SECTION (1/3 of leftover space)
+        # ----------------------------------
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.34
+            padding: "20dp"
+            spacing: "10dp"
+
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                
+                MDButton:
+                    style: "elevated"
+                    theme_width: "Custom"
+
+                    height: "128"
+                    size_hint_x: 0.4
+
+                    on_press: root.open_cleaning_screen()
+                    
+                    MDButtonText:
+                        text: "Cleaning Instructions"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        font_style: "Title"
+

@@ -1,0 +1,56 @@
+<ServiceScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.primaryColor        
+
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1.01
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "home"
+                    on_press: root.return_home()    
+
+            MDTopAppBarTitle:
+                text: "SERVICE INSTRUCTIONS"
+                pos_hint: {"center_x": .5}
+
+        # ----------------------------------
+        # SCROLLABLE INSTRUCTIONS SECTION
+        # ----------------------------------
+        ScrollView:
+            size_hint_y: 0.8
+            MDList:
+                id: service_steps
+                padding: "20dp"  # Padding around the list
+                spacing: "10dp"  # Space between each step
+                
+        # ----------------------------------
+        # BOTTOM SECTION (1/3 of leftover space)
+        # ----------------------------------
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.2
+            padding: "20dp"
+            spacing: "10dp"
+
+            MDButton:
+                style: "elevated"
+                on_press: root.open_cleaning_screen()
+                size_hint_x: 0.3
+                size_hint_y: 0.3
+               
+                MDButtonText:
+                    text: "Back to Cleaning Screen"
+
+
+            MDButton:
+                style: "elevated"
+                on_press: root.return_home()
+                size_hint_x: 0.3
+                size_hint_y: 0.3
+
+                MDButtonText:
+                    text: "COMPLETE"

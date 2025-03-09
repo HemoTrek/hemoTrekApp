@@ -1,0 +1,97 @@
+<SelectTestType>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.primaryColor
+
+        FloatLayout:
+
+            # The top app bar is added first so it appears underneath the overlay.
+            MDTopAppBar:
+                id: app_bar
+                type: "small"
+                size_hint_y: None
+                height: dp(56)
+                pos_hint: {"top": 1}
+                md_bg_color: app.theme_cls.primaryColor
+
+                MDTopAppBarLeadingButtonContainer:
+                    MDActionTopAppBarButton:
+                        icon: "home"
+                        on_press: root.return_home()
+
+                MDTopAppBarTitle:
+                    text: " "
+                    pos_hint: {"center_x": 0.5}
+
+                MDTopAppBarTrailingButtonContainer:
+                    MDActionTopAppBarButton:
+                        icon: "tune"
+                        on_press: root.open_settings()
+
+            # This AnchorLayout overlays the top app bar.
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                # Bind its size and position to match the app bar.
+                size_hint: None, None
+                size: app_bar.size
+                pos: app_bar.pos
+
+                Image:
+                    source: "icons/hemoTrekLogo.png"
+                    size_hint: 0.8, 0.8
+                    allow_stretch: True
+                    keep_ratio: True
+
+            # ----------------------------------
+            # MIDDLE SECTION (1/2 of leftover space)
+            # ----------------------------------
+            MDBoxLayout:
+                orientation: "horizontal"
+
+                MDLabel:
+                    id: welcome_label
+                    font_style: "Display"
+                    halign: "center"
+                    spacing: "20dp"
+                    padding: "20dp"
+
+            # ----------------------------------
+            # BOTTOM SECTION (1/2 of leftover space)
+            # ----------------------------------
+
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                size_hint_y: 0.5  # adjust as needed
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    spacing: "10dp"
+                    size_hint: None, None
+                    height: "128dp"
+                    width: self.minimum_width  # automatically set the width based on its children
+
+                    MDButton:
+                        style: "elevated"
+                        theme_width: "Custom"
+                        size_hint_x: None
+                        width: "150dp"
+                        height: "128dp"
+                        on_press: root.open_emergency_patients_screen()
+
+                        MDButtonText:
+                            text: "Emergency"
+                            font_style: "Title"        
+
+                    MDButton:
+                        style: "elevated"
+                        theme_width: "Custom"
+                        size_hint_x: None
+                        width: "150dp"
+                        height: "128dp"
+                        on_press: root.open_oncology_patients_screen()
+
+                        MDButtonText:
+                            text: "Oncology"
+                            font_style: "Title"    
