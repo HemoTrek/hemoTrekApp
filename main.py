@@ -25,15 +25,19 @@ PORT = 65432
 
 def init_db():
     # Read the entire SQL script into a string
-    with open("data/schema.sql", "r") as f:
-        sql_script = f.read()
+    with open("schema/schema.sql", "r") as f:
+        schema_sql_script = f.read()
+    
+    with open("schema/createTestPatients.sql", "r") as f:
+        data_sql_script = f.read()
 
     # Connect to your local database file (or memory DB if you want)
     conn = sqlite3.connect("data/appData.db")
     cursor = conn.cursor()
 
     # Execute the script. This runs each statement in schema.sql
-    cursor.executescript(sql_script)
+    cursor.executescript(schema_sql_script)
+    cursor.executescript(data_sql_script)
 
     conn.commit()
     cursor.close()
