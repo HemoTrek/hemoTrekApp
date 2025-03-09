@@ -21,7 +21,7 @@
             MDCard:
                 orientation: "vertical"
                 size_hint: (None, None)
-                size: ("300dp", "220dp")
+                size: ("300dp", "320dp")
                 padding: dp(20)
                 spacing: dp(20)
                 radius: dp(12)
@@ -33,9 +33,21 @@
                     MDTextFieldHintText:
                         text: "Enter Patients Name"
 
+                MDTextField:
+                    id: DOB
+                    helper_text_mode: "on_focus"
+                    MDTextFieldHintText:
+                        text: "Enter Patients Date of Birth"
+
+                MDTextField:
+                    id: notes
+                    helper_text_mode: "on_focus"
+                    MDTextFieldHintText:
+                        text: "Enter Patient Notes"
+
                 MDButton:
                     style: "elevated"
-                    on_press: root.save_changes(name.text)
+                    on_press: root.save_changes(name.text, DOB.text, notes.text)
                     pos_hint: {"center_x": 0.5}
                     MDButtonText:
                         text: "Save"
@@ -50,6 +62,6 @@
             MDButton:
                 style: "elevated"
                 width: dp(150)
-                on_press: root.return_to_patients()
+                on_press: root.return_home()
                 MDButtonText:
-                    text: "Return to Patients"
+                    text: "Return to Home"
