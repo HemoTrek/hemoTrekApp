@@ -35,7 +35,7 @@ class OncologyPatients(helperPage):
     def get_all_users(self):
         conn = sqlite3.connect('data/appData.db')
         c = conn.cursor()
-        c.execute("SELECT name, department FROM patientInfo where department = 'oncology';")
+        c.execute("SELECT name, department FROM patientInfo where department = 'Oncology';")
         rows = c.fetchall()
         c.close()
         conn.close()
@@ -44,7 +44,7 @@ class OncologyPatients(helperPage):
     def clear_all_users(self):
         conn = sqlite3.connect('data/appData.db')
         c = conn.cursor()
-        c.execute("DELETE FROM patientInfo where department = 'oncology';")
+        c.execute("DELETE FROM patientInfo where department = 'Oncology';")
         conn.commit()
         c.close()
         conn.close()

@@ -38,7 +38,7 @@ class EmergencyPatients(helperPage):
     def get_all_users(self):
         conn = sqlite3.connect('data/appData.db')
         c = conn.cursor()
-        c.execute("SELECT name, department FROM patientInfo where department = 'emergency';")
+        c.execute("SELECT name, department FROM patientInfo where department = 'Emergency';")
         rows = c.fetchall()
         c.close()
         conn.close()
