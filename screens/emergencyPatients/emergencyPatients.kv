@@ -42,6 +42,10 @@
                 spacing: dp(10)
                 padding: dp(10)
 
+        # ----------------------------------------
+        # Button AREA
+        # ----------------------------------------
+
         MDBoxLayout:
             orientation: "horizontal"
             size_hint_y: None
@@ -50,21 +54,7 @@
             padding: "10dp"
 
             MDButton:
-                on_press: root.add_patient()
-
-                MDButtonText:
-                    text: "Add Patient"
-
-#            MDButton:
-#                on_press: root.clear_all_users()
-#
-#                MDButtonText:
-#                    text: "Clear Patient List"
-
-            MDButton:
                 on_press: root.open_setup_screen()
 
                 MDButtonText:
                     text: "Run Without Patient"
-
-

@@ -2,8 +2,8 @@ from kivy.uix.button import Button
 
 from screens.helperPage.helperPage import helperPage
 from screens.login.customButton import CustomButton
-class Login(helperPage):
 
+class Login(helperPage):
     def on_pre_enter(self, *args):
         pass
 
