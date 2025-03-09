@@ -26,7 +26,9 @@ class OncologyPatients(helperPage):
         self.ids.recycle_view.data = [
             {
                 "name": str(patient[0]),
-                "department": str(patient[1])
+                "department": str(patient[1]),
+                "on_press": lambda x=patient[0]: self.select_patient(x)  # Pass patient name
+
             }
             for patient in patientInfo 
         ]

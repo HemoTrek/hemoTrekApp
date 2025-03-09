@@ -1,6 +1,7 @@
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.label import MDLabel
 from kivy.app import App
+from .patientInfo import Patient
 
 import socket
 
@@ -56,6 +57,15 @@ class helperPage(MDScreen):
         print(f"Patient Selected: {app.patient}")
         self.open_setup_screen(instance)
 
+    def select_patient(self, patient_data):
+        """Create a Patient object and trigger the setup instruction screen."""
+        app = App.get_running_app()
+        app.current_patient = Patient(name=patient_data)  # Store Patient object
+        print(f"Patient selected: {app.current_patient.name}")
+
+        # Instead of starting the test directly, open the setup instruction screen
+        self.open_setup_screen()
+
     def open_cleaning_screen(self):
         """
         Navigates to the cleaning instructions screen.
@@ -97,6 +107,8 @@ class helperPage(MDScreen):
 
         # Get the running app instance
         app = App.get_running_app()
+        print(f"Patient selected: {app.current_patient}")
+
 
         # Ensure runsSinceLastService exists
         if not hasattr(app, "runsSinceLastService"):

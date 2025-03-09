@@ -46,7 +46,7 @@
 
             MDButton:
                 style: "elevated"
-                on_press: root.start_test()
+                on_press: root.start_test() if hasattr(app, "current_patient") else print("No patient selected!")
                 size_hint_x: 0.3
                 size_hint_y: 0.3
                 MDButtonText:

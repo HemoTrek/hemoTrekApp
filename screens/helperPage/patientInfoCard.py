@@ -11,6 +11,8 @@ class PatientInfoCard(MDCard):
     date_of_birth = StringProperty("")
     notes = StringProperty("")
     icon = 'account'
+    # on_press = ObjectProperty(lambda x: None)  # Default empty function
+
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -21,6 +23,8 @@ class PatientInfoCard(MDCard):
         self.padding = dp(10)
         self.radius = [10]
         self.orientation = "vertical"
+        self.bind(on_touch_down=self.card_clicked)
+
 
         # Main vertical layout.
         self.layout = MDBoxLayout(
@@ -74,3 +78,7 @@ class PatientInfoCard(MDCard):
     def _update_icon_font_size(self, instance, size):
         # Update the icon's font_size to be 80% of the icon_layout's height.
         self.icon_widget.font_size = instance.height * 0.8
+
+    def card_clicked(self, instance, touch):
+        if self.collide_point(*touch.pos):
+            self.on_press(self.name)  # Call the assigned function
