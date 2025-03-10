@@ -9,6 +9,7 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.scrollview import MDScrollView
 from kivy.uix.image import Image
 from kivymd.uix.boxlayout import MDBoxLayout
+import sqlite3
 
 from screens.helperPage.helperPage import helperPage
 from screens.helperPage.instructionCard import InstructionsCard
@@ -35,11 +36,13 @@ class CleaningScreen(helperPage):
                 image_source=step.get("image", "")
             )
             self.ids.setup_steps.add_widget(card)
-
+    
+        conn = sqlite3.connect('data/appData.db')
+        c = conn.cursor()
         
-        app = App.get_running_app()  # Correctly retrieve the running app instance
+        # Fetch the latest usagesSinceLastService value
+        c.execute("SELECT usagesSinceLastService FROM deviceService LIMIT 1")
+        usages_since_service = c.fetchone()
+        conn.close()
 
-        if hasattr(app, "runsSinceLastService"):  # Ensure the attribute exists
-            self.ids.runs_since_last_service.text = f"Runs Since Last Service: {app.runsSinceLastService}"
-        else:
-            self.ids.runs_since_last_service.text = "Runs Since Last Service: 0"  # Fallback if attribute isn't set
+        self.ids.runs_since_last_service.text = f"Runs Since Last Service: {usages_since_service[0]}"
