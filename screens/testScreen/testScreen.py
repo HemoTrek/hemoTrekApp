@@ -1,6 +1,7 @@
 from screens.helperPage.helperPage import helperPage
 from kivy.app import App
 from kivy.uix.screenmanager import Screen
+from kivy.clock import Clock
 
 class TestScreen(helperPage):
     
@@ -9,20 +10,55 @@ class TestScreen(helperPage):
         self.ids.patientName_label.text = f"Results for {app.patient}"
         print(f"Displaying Results for {app.patient}")
    
-    def update_wholeblood_result(self):
+    def update_wholeblood_result(self, viscosity):
         self.ids.wholeblood_progress.color = (0,1,0,0)
-        self.ids.wholeblood_viscosity.text = "#.## cP"
-        self.ids.wholeblood_viscosity.color = (0,1,0,1)
+        self.ids.wholeblood_viscosity.text = format(viscosity, ".2f") + " cP"
+        self.ids.wholeblood_viscosity.color = (1,0,0,1)
 
-    def update_serum_result(self):
+    def update_serum_result(self, viscosity):
         self.ids.serum_progress.color = (0,1,0,0)
-        self.ids.serum_viscosity.text = "#.## cP"
+        self.ids.serum_viscosity.text = format(viscosity, ".2f") + " cP"
         self.ids.serum_viscosity.color = (1,0,0,1)
 
-    def update_HVS_result(self):
+    def update_HVS_result(self, diagnosis):
         self.ids.HVS_progress.color = (0,1,0,0)
-        self.ids.HVS_evaluation.text = "Abnormal"
+        self.ids.HVS_evaluation.text = diagnosis
         self.ids.HVS_evaluation.color = (1,0,0,1)
+    
+    def calculate_Diagnosis(self, serumViscosity, wholeBloodViscosity):
+        if(serumViscosity>10):
+            self.update_HVS_result("High Serum Viscosity")
+        elif(wholeBloodViscosity>10):
+            self.update_HVS_result("High Whole Blood Viscosity")
+        else:
+            self.update_HVS_result("Normal")
 
 
-    pass
+    def update_results(self, results):
+        """
+        Update the UI elements with the received results.
+        Expected results format (as a dict):
+            {
+                "serumViscosity": 4.2,
+                "wholeViscosity": 3.1,
+                "HVS_evaluation": "Abnormal"   # Optional
+            }
+        """
+        # serumViscosity = round(results.get('serumViscosity'), 2)
+        # wholeViscosity = round(results.get('wholeViscosity'), 2)
+        # Update labels with formatted text
+        self.update_wholeblood_result(results.get('wholeViscosity', 'N/A'))
+        self.update_serum_result(results.get('serumViscosity', 'N/A'))
+        self.calculate_Diagnosis(results.get('serumViscosity', 'N/A'), results.get('wholeViscosity', 'N/A'))
+        
+        # Optionally adjust colors based on the values
+        whole = results.get('wholeViscosity')
+        if whole is not None:
+            self.ids.wholeblood_viscosity.color = (1, 0, 0, 1) if whole > 5.0 else (0, 1, 0, 1)
+    
+    def on_results_received(self, results):
+        """
+        This method should be called when new results arrive.
+        It schedules a UI update on the main thread.
+        """
+        Clock.schedule_once(lambda dt: self.update_results(results))

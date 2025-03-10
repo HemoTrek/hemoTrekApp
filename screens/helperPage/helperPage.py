@@ -111,7 +111,7 @@ class helperPage(MDScreen):
                 size_hint_y=None,
                 height="50dp"
             ))
-
+        app.server.start_test()
         self.manager.current = 'test'
 
 #Dont touch this - it's joeys stuff

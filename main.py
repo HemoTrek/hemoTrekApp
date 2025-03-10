@@ -1,3 +1,5 @@
+import threading
+
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
@@ -88,17 +90,16 @@ class MyApp(MDApp):
         return sm
 
 if __name__ == "__main__":
-    # server = PersistentServer(HOST, PORT)
-    # server.start()
-    
-    # # Keep the server running
-    # try:
-    #     while True:
-    #         pass
-    # except KeyboardInterrupt:
-    #     print("Shutting down server...")
-    #     server.stop()
-
     init_db()
-    MyApp().run()
-
+    # Create and start the server in a daemon thread
+    server = PersistentServer(HOST, PORT)
+    server_thread = threading.Thread(target=server.start, daemon=True)
+    server_thread.start()
+    
+    # Create your app instance and attach the server
+    app = MyApp()
+    app.server = server  # Now your app has a reference to the server
+    app.run()
+    
+    # After the app closes, stop the server
+    server.stop()
