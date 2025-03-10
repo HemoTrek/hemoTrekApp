@@ -45,7 +45,7 @@ class helperPage(MDScreen):
         """
         Navigates to the setup instructions screen.
         """
-        print("opening setup screen")
+        print("[Opening setup screen]")
         print(*args)
         self.manager.current = 'setupScreen'
     
@@ -62,7 +62,7 @@ class helperPage(MDScreen):
         """Create a Patient object and trigger the setup instruction screen."""
         app = App.get_running_app()
         app.current_patient = Patient(name=patient_data)  # Store Patient object
-        print(f"Patient selected: {app.current_patient.name}")
+        print(f"Patient selected: {patient_data}")
 
         # Instead of starting the test directly, open the setup instruction screen
         self.open_setup_screen()

@@ -42,12 +42,3 @@ class OncologyPatients(helperPage):
         c.close()
         conn.close()
         return rows
-    
-    def clear_all_users(self):
-        conn = sqlite3.connect('data/appData.db')
-        c = conn.cursor()
-        c.execute("DELETE FROM patientInfo where department = 'Oncology';")
-        conn.commit()
-        c.close()
-        conn.close()
-        self.on_enter()
