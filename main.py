@@ -60,8 +60,14 @@ class MyApp(MDApp):
         self.icon = 'icons/hemoTrekSmallLogo.png'
 
         self.theme_cls.theme_style = "Dark"  # or "Light"
-        self.theme_cls.primary_palette = "Lavenderblush"
-        
+        self.theme_cls.primary_palette = "Salmon"
+        self.theme_cls.primary_color = [154/255, 254/255, 246/255, 1]  # RGBA for #FFA785
+        # self.theme_cls.primary_color = [255/255, 216/255, 89/255, 1]  # RGBA for #FFA785
+        # self.theme_cls.primary_color = [254/255, 167/255, 133/255, 1]  # RGBA for #FFA785
+        # self.theme_cls.primary_color = [223/255, 2/255, 2/255, 1]  # RGBA for #FFA785
+        # self.theme_cls.primary_color = [74/255, 166/255, 167/255, 1]  # RGBA for #FFA785
+
+
         # Explicitly load the .kv files for each screen
         Builder.load_file("screens/login/login.kv")
         Builder.load_file("screens/testScreen/testScreen.kv")
