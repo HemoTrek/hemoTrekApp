@@ -15,7 +15,7 @@ class TestScreen(helperPage):
             self.ids.patientName_label.text = "No Patient Selected"
             print("No patient selected.")
             
-    def update_wholeblood_result(self):
+    def update_wholeblood_result(self, viscosity):
         self.ids.wholeblood_progress.color = (0,1,0,0)
         self.ids.wholeblood_viscosity.text = format(viscosity, ".2f") + " cP"
         self.ids.wholeblood_viscosity.color = (1,0,0,1)
