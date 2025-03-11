@@ -48,7 +48,5 @@ class CleaningScreen(helperPage):
         # Toggle visibility instead of removing the button
         if usages_since_service >= 5:
             self.ids.complete_button.disabled = True
-            self.ids.complete_button.opacity = 0  # Hide the button
         else:
             self.ids.complete_button.disabled = False
-            self.ids.complete_button.opacity = 1  # Show the button
