@@ -46,17 +46,38 @@ class PersistentServer:
                 print("Error receiving data:", e)
                 self.running = False
 
+    # Example: When the server receives results from the firmware...
     def handle_message(self, message):
-        """Process an incoming message from the client."""
-        print("Received message:", message)
-        # Optionally, send a response back
-        response = {"status": "received", "echo": message}
-        self.send_message(response)
+        # Check if results are included
+        if "result" in message:
+            results = message["result"]  # This should be a dict with keys like 'serumViscosity', etc.
+            print("Results Received:", results)
+            # Now, update the TestScreen.
+            from kivy.app import App
+            app = App.get_running_app()
+            test_screen = app.root.get_screen('test')
+            test_screen.on_results_received(results)
+        else:
+            print("Received message:", message)
+            response = {"status": "received", "echo": message}
+            self.send_message(response)
+
 
     def send_message(self, message):
         """Send a JSON-formatted message to the client."""
         try:
             message = json.dumps(message) + DELIMITER
+            self.client_socket.sendall(message.encode())
+        except Exception as e:
+            print("Error sending message:", e)
+
+    def start_test(self):
+        """Send a JSON-formatted message to the client."""
+        try:
+            message = json.dumps({"command": "Start Test"}) + DELIMITER
+
+            print("App - sending message:", message)
+
             self.client_socket.sendall(message.encode())
         except Exception as e:
             print("Error sending message:", e)

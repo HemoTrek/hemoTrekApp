@@ -23,9 +23,6 @@ class EmergencyPatients(helperPage):
     def on_enter(self):
         patientInfo = self.get_all_users()
 
-        for patient in patientInfo:
-            print(patient[0])
-
         # Prepare data for the RecycleView.
         self.ids.recycle_view.data = [
             {

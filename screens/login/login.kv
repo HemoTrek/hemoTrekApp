@@ -4,9 +4,8 @@
         md_bg_color: app.theme_cls.primary_color        
 
         # ----------------------------------
-        # TOP SECTION (1/3 of leftover space)
+        # TOP SECTION
         # ----------------------------------
-        
         FitImage:
             source: "icons/hemoTrekLogo.png"
             size_hint_x: 0.8
@@ -16,9 +15,8 @@
             keep_ratio: True
 
         # ----------------------------------
-        # MIDDLE SECTION (1/3 of leftover space)
+        # MIDDLE SECTION
         # ----------------------------------
-
         MDCard:
             id: loginCard
             orientation: "vertical"
@@ -47,23 +45,21 @@
 
             MDButton:
                 style: "elevated"
-                on_press: 
+                pos_hint: {"center_x": 0.5}
+                on_press:
                     app.username = username.text
                     app.password = password.text
-
                     root.open_test_type_screen()
-
-                pos_hint: {"center_x": 0.5}
 
                 MDButtonText:
                     text: "Sign In"
 
         # ----------------------------------
-        # BOTTOM SECTION (1/3 of leftover space)
+        # BOTTOM SECTION
         # ----------------------------------
         MDBoxLayout:
             orientation: "horizontal"
-            size_hint_y: 0.34
+            size_hint_y: 0.2
             padding: "20dp"
             spacing: "10dp"
 
@@ -74,7 +70,6 @@
                 MDButton:
                     style: "elevated"
                     theme_width: "Custom"
-
                     height: "128"
                     size_hint_x: 0.4
 
@@ -84,4 +79,3 @@
                         text: "Cleaning Instructions"
                         pos_hint: {"center_x": 0.5, "center_y": 0.5}
                         font_style: "Title"
-

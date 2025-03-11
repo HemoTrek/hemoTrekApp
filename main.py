@@ -1,3 +1,5 @@
+import threading
+
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
@@ -8,7 +10,6 @@ from kivy.modules import inspector
 from screens.login.login import Login
 from screens.testScreen.testScreen import TestScreen
 from screens.settingsScreen.settingsScreen import SettingsScreen
-from screens.addPatient.addPatient import AddPatient
 from screens.selectTestType.selectTestType import SelectTestType
 from screens.emergencyPatients.emergencyPatients import EmergencyPatients
 from screens.oncologyPatients.oncologyPatients import OncologyPatients
@@ -72,7 +73,6 @@ class MyApp(MDApp):
         Builder.load_file("screens/login/login.kv")
         Builder.load_file("screens/testScreen/testScreen.kv")
         Builder.load_file("screens/settingsScreen/settingsScreen.kv")
-        Builder.load_file("screens/addPatient/addPatient.kv")
         Builder.load_file("screens/selectTestType/selectTestType.kv")
         Builder.load_file("screens/emergencyPatients/emergencyPatients.kv")
         Builder.load_file("screens/oncologyPatients/oncologyPatients.kv")
@@ -86,7 +86,6 @@ class MyApp(MDApp):
         sm.add_widget(Login(name='home'))
         sm.add_widget(TestScreen(name='test'))
         sm.add_widget(SettingsScreen(name='settings'))
-        sm.add_widget(AddPatient(name='addPatient'))
         sm.add_widget(SelectTestType(name='selectTestType'))
         sm.add_widget(EmergencyPatients(name='emergencyPatients'))
         sm.add_widget(OncologyPatients(name='oncologyPatients'))
@@ -97,17 +96,16 @@ class MyApp(MDApp):
         return sm
 
 if __name__ == "__main__":
-    # server = PersistentServer(HOST, PORT)
-    # server.start()
-    
-    # # Keep the server running
-    # try:
-    #     while True:
-    #         pass
-    # except KeyboardInterrupt:
-    #     print("Shutting down server...")
-    #     server.stop()
-
     init_db()
-    MyApp().run()
-
+    # Create and start the server in a daemon thread
+    server = PersistentServer(HOST, PORT)
+    server_thread = threading.Thread(target=server.start, daemon=True)
+    server_thread.start()
+    
+    # Create your app instance and attach the server
+    app = MyApp()
+    app.server = server  # Now your app has a reference to the server
+    app.run()
+    
+    # After the app closes, stop the server
+    server.stop()

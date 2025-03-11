@@ -120,43 +120,11 @@
             padding: "20dp"
             size_hint_y: 0.3
 
-            GridLayout:
-                cols: 2
-                padding: 20
-                spacing: 20
-                
-                MDButton:
-                    size_hint: None, None
-                    size: ("150dp", "50dp")
-                    pos_hint: {"center_x": .5, "center_y": .5}              
-                    on_press: root.update_wholeblood_result()
+            MDButton:
+                size_hint: None, None
+                size: ("150dp", "50dp")
+                pos_hint: {"center_x": .5, "center_y": .5}              
+                on_press: root.open_cleaning_screen()
 
-                    MDButtonText:
-                        text: "Update Wholeblood"
-
-                MDButton:
-                    size_hint: None, None
-                    size: ("150dp", "50dp")
-                    pos_hint: {"center_x": .5, "center_y": .5}              
-                    on_press: root.update_serum_result()
-
-                    MDButtonText:
-                        text: "Update Serum"
-
-                MDButton:
-                    size_hint: None, None
-                    size: ("150dp", "50dp")
-                    pos_hint: {"center_x": .5, "center_y": .5}              
-                    on_press: root.update_HVS_result()
-
-                    MDButtonText:
-                        text: "Update HVS"
-
-                MDButton:
-                    size_hint: None, None
-                    size: ("150dp", "50dp")
-                    pos_hint: {"center_x": .5, "center_y": .5}              
-                    on_press: root.open_cleaning_screen()
-
-                    MDButtonText:
-                        text: "Proceed to Cleaning"
+                MDButtonText:
+                    text: "Proceed to Cleaning"

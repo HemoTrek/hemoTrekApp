@@ -85,15 +85,6 @@ class helperPage(MDScreen):
         """
         self.manager.current = 'home'
     
-    def add_patient(self):
-        # Get the addPatient screen instance
-        add_patient_screen = self.manager.get_screen("addPatient")
-        # Store the current screen name as the return destination.
-        add_patient_screen.return_page = self.manager.current
-        # Switch to the addPatient screen.
-        self.manager.current = "addPatient"
-
-    
     def return_to_patients(self):
         """
         Navigates back to the listPatients screen.
@@ -155,7 +146,7 @@ class helperPage(MDScreen):
                 size_hint_y=None,
                 height="50dp"
             ))
-
+        app.server.start_test()
         self.manager.current = 'test'
 
 
