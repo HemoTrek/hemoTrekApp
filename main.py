@@ -60,9 +60,19 @@ class MyApp(MDApp):
         self.title = 'HemoTrek'
         self.icon = 'icons/hemoTrekSmallLogo.png'
 
-        self.theme_cls.theme_style = "Dark"  # or "Light"
-        self.theme_cls.primary_palette = "Salmon"
-        self.theme_cls.primary_color = [154/255, 254/255, 246/255, 1]  # RGBA for #FFA785
+        self.theme_cls.theme_style = "Light" # Dark
+        self.theme_cls.primary_color = [209/255, 255/255, 252/255, 1]  # your chosen primary color
+        self.theme_cls.accent_color = [74/255, 168/255, 168/255, 1]    # using accent_color for secondary emphasis
+
+
+        # self.theme_cls.primary_color = [209/255, 255/255, 252/255, 1]  # RGBA for d2fffc
+
+        # self.theme_cls.secondary_color = [74/255, 168/255, 168/255, 1]  # RGBA for 4aa6a7
+
+        # self.theme_cls.primary_color = [255/255, 185/255, 155/255, 1]  # RGBA for ffb79a
+
+
+        # self.theme_cls.primary_color = [154/255, 254/255, 246/255, 1]  # RGBA for #FFA785
         # self.theme_cls.primary_color = [255/255, 216/255, 89/255, 1]  # RGBA for #FFA785
         # self.theme_cls.primary_color = [254/255, 167/255, 133/255, 1]  # RGBA for #FFA785
         # self.theme_cls.primary_color = [223/255, 2/255, 2/255, 1]  # RGBA for #FFA785
@@ -70,6 +80,8 @@ class MyApp(MDApp):
 
 
         # Explicitly load the .kv files for each screen
+        Builder.load_file("global.kv")
+
         Builder.load_file("screens/login/login.kv")
         Builder.load_file("screens/testScreen/testScreen.kv")
         Builder.load_file("screens/settingsScreen/settingsScreen.kv")
