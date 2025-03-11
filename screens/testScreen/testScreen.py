@@ -7,10 +7,15 @@ class TestScreen(helperPage):
     
     def on_pre_enter(self, *args):
         app = App.get_running_app()
-        self.ids.patientName_label.text = f"Results for {app.patient}"
-        print(f"Displaying Results for {app.patient}")
-   
-    def update_wholeblood_result(self, viscosity):
+        
+        if hasattr(app, "current_patient") and app.current_patient:
+            self.ids.patientName_label.text = f"Results for {app.current_patient.name}"
+            print(f"Displaying Results for {app.current_patient.name}")
+        else:
+            self.ids.patientName_label.text = "No Patient Selected"
+            print("No patient selected.")
+            
+    def update_wholeblood_result(self):
         self.ids.wholeblood_progress.color = (0,1,0,0)
         self.ids.wholeblood_viscosity.text = format(viscosity, ".2f") + " cP"
         self.ids.wholeblood_viscosity.color = (1,0,0,1)
