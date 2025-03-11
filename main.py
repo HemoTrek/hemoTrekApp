@@ -110,13 +110,13 @@ class MyApp(MDApp):
 if __name__ == "__main__":
     init_db()
     # Create and start the server in a daemon thread
-    # server = PersistentServer(HOST, PORT)
-    # server_thread = threading.Thread(target=server.start, daemon=True)
-    # server_thread.start()
+    server = PersistentServer(HOST, PORT)
+    server_thread = threading.Thread(target=server.start, daemon=True)
+    server_thread.start()
     
     # Create your app instance and attach the server
     app = MyApp()
-    # app.server = server  # Now your app has a reference to the server
+    app.server = server  # Now your app has a reference to the server
     app.run()
     
     # After the app closes, stop the server
