@@ -1,7 +1,7 @@
 <ServiceScreen>:
     MDBoxLayout:
         orientation: 'vertical'
-        md_bg_color: app.theme_cls.primaryColor        
+        md_bg_color: app.theme_cls.primary_color        
 
         MDTopAppBar:
             type: "small"
@@ -36,19 +36,19 @@
             padding: "20dp"
             spacing: "10dp"
 
-            MDButton:
-                style: "elevated"
-                on_press: root.open_cleaning_screen()
-                size_hint_x: 0.3
-                size_hint_y: 0.3
+#            MDButton:
+#                style: "elevated"
+#                on_press: root.open_cleaning_screen()
+#                size_hint_x: 0.3
+#                size_hint_y: 0.3
                
-                MDButtonText:
-                    text: "Back to Cleaning Screen"
+#                MDButtonText:
+#                    text: "Back to Cleaning Screen"
 
 
             MDButton:
                 style: "elevated"
-                on_press: root.return_home()
+                on_press: root.reset_service_counter()
                 size_hint_x: 0.3
                 size_hint_y: 0.3
 

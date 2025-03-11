@@ -1,7 +1,7 @@
 <SetupScreen>:
     MDBoxLayout:
         orientation: 'vertical'
-        md_bg_color: app.theme_cls.primaryColor        
+        md_bg_color: app.theme_cls.primary_color        
 
         MDTopAppBar:
             type: "small"
@@ -14,7 +14,7 @@
                     on_press: root.return_home()    
 
             MDTopAppBarTitle:
-                text: "SETUP INSTRUCTIONS"
+                text: "Setup Instructions"
                 pos_hint: {"center_x": .5}
 
         # ----------------------------------
@@ -46,7 +46,7 @@
 
             MDButton:
                 style: "elevated"
-                on_press: root.start_test()
+                on_press: root.start_test() if hasattr(app, "current_patient") else print("No patient selected!")
                 size_hint_x: 0.3
                 size_hint_y: 0.3
                 MDButtonText:

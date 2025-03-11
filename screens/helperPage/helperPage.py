@@ -1,6 +1,8 @@
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.label import MDLabel
 from kivy.app import App
+from .patientInfo import Patient
+import sqlite3
 
 import socket
 
@@ -43,7 +45,7 @@ class helperPage(MDScreen):
         """
         Navigates to the setup instructions screen.
         """
-        print("opening setup screen")
+        print("[Opening setup screen]")
         print(*args)
         self.manager.current = 'setupScreen'
     
@@ -55,6 +57,15 @@ class helperPage(MDScreen):
         app.patient = patient  # Store selected patient's name
         print(f"Patient Selected: {app.patient}")
         self.open_setup_screen(instance)
+
+    def select_patient(self, patient_data):
+        """Create a Patient object and trigger the setup instruction screen."""
+        app = App.get_running_app()
+        app.current_patient = Patient(name=patient_data)  # Store Patient object
+        print(f"Patient selected: {patient_data}")
+
+        # Instead of starting the test directly, open the setup instruction screen
+        self.open_setup_screen()
 
     def open_cleaning_screen(self):
         """
@@ -97,23 +108,47 @@ class helperPage(MDScreen):
 
         # Get the running app instance
         app = App.get_running_app()
+        print(f"Patient selected: {app.current_patient}")
 
-        # Ensure runsSinceLastService exists
-        if not hasattr(app, "runsSinceLastService"):
-            app.runsSinceLastService = 0  # Initialize if it doesn't exist
-            print("runsSinceLastService variable was did not previously exist")
+        try:
+            # Connect to the database
+            conn = sqlite3.connect('data/appData.db')
+            c = conn.cursor()
+            
+            # Check if a row exists
+            c.execute("SELECT COUNT(*) FROM deviceService")
+            row_count = c.fetchone()[0]
 
-        # Increase the number of runs since last service by 1
-        app.runsSinceLastService += 1
+            if row_count > 0:
+                # Increment usagesSinceLastService for the most recent row
+                c.execute("""
+                    UPDATE deviceService
+                    SET usagesSinceLastService = usagesSinceLastService + 1
+                    WHERE rowid = (SELECT MAX(rowid) FROM deviceService)
+                """)
+                conn.commit()
 
-        # Print the updated value
-        print(f"Runs since last service = {app.runsSinceLastService}")
+                # Fetch the updated value
+                c.execute("SELECT usagesSinceLastService FROM deviceService ORDER BY rowid DESC LIMIT 1")
+                updated_value = c.fetchone()[0]  # Get the incremented value
 
-        # Update the label that displays runsSinceLastService
+                print(f"Updated Runs Since Last Service: {updated_value}")
+            else:
+                updated_value = 0
+                print("No existing records in deviceService.")
+
+        except sqlite3.Error as e:
+            print(f"Database error: {e}")
+            updated_value = 0  # Default fallback
+
+        finally:
+            conn.close()
+
+        # Update the UI with the new value
         if hasattr(self.ids, "setup_steps"):
             self.ids.setup_steps.clear_widgets()  # Refresh UI
             self.ids.setup_steps.add_widget(MDLabel(
-                text=f"Runs Since Last Service: {app.runsSinceLastService}",
+                text=f"Runs Since Last Service: {updated_value}",
                 halign="center",
                 theme_text_color="Custom",
                 text_color=(0, 0, 0, 1),
@@ -122,6 +157,43 @@ class helperPage(MDScreen):
             ))
 
         self.manager.current = 'test'
+
+
+    def reset_service_counter(self):
+        """Resets usagesSinceLastService to 0 in the deviceService table."""
+        conn = sqlite3.connect('data/appData.db')
+        c = conn.cursor()
+        
+        # Update the value in the deviceService table
+        c.execute("UPDATE deviceService SET usagesSinceLastService = 0")
+
+        # Commit and close connection
+        conn.commit()
+        conn.close()
+
+        print("Service usage reset to 0 successfully.")
+            
+        self.manager.current = 'home'
+
+
+    def get_usages_since_last_service():
+        """Fetches usagesSinceLastService from the deviceService table."""
+        try:
+            conn = sqlite3.connect('data/appData.db')
+            c = conn.cursor()
+            
+            # Fetch the latest usagesSinceLastService value
+            c.execute("SELECT usagesSinceLastService FROM deviceService LIMIT 1")
+            result = c.fetchone()
+
+            conn.close()
+
+            # Return the fetched value, defaulting to 0 if no record exists
+            return result[0] if result else 0
+
+        except sqlite3.Error as e:
+            print(f"Database error: {e}")
+            return 0  # Default fallback in case of an error
 
 #Dont touch this - it's joeys stuff
     def select_emergency(self):
