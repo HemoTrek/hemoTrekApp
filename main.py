@@ -24,6 +24,8 @@ import sqlite3
 HOST = '127.0.0.1'
 PORT = 65432
 
+Window.fullscreen = 'auto'
+
 def init_db():
     # Read the entire SQL script into a string
     with open("schema/schema.sql", "r") as f:
