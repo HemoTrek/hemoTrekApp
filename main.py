@@ -21,6 +21,7 @@ from persistentServer import PersistentServer
 
 import sqlite3
 
+Window.fullscreen = 'auto'  # Automatically maximize window on launch
 HOST = '127.0.0.1'
 PORT = 65432
 
