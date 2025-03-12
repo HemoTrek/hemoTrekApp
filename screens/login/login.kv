@@ -23,36 +23,59 @@
             size_hint: (0.6, 0.6)
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
             padding: dp(20)
-            spacing: dp(20)
             radius: dp(12)
             elevation: 4
 
-            MDTextField:
-                id: username
-                helper_text_mode: "on_focus"
-                MDTextFieldHintText:
-                    text: "Enter Username or Email"
-                MDTextFieldTrailingIcon:
-                    icon: "account"
+            # Push text fields to the top
+            AnchorLayout:
+                anchor_y: "top"
+                size_hint_y: 0.5
 
-            MDTextField:
-                id: password
-                password: True
-                MDTextFieldHintText:
-                    text: "Enter Password"
-                MDTextFieldTrailingIcon:
-                    icon: "key"
+                MDBoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(10)
 
-            MDButton:
-                style: "elevated"
-                pos_hint: {"center_x": 0.5}
-                on_press:
-                    app.username = username.text
-                    app.password = password.text
-                    root.open_test_type_screen()
+                    MDTextField:
+                        id: username
+                        helper_text_mode: "on_focus"
+                        MDTextFieldHintText:
+                            text: "Enter Username or Email"
+                        MDTextFieldTrailingIcon:
+                            icon: "account"
 
-                MDButtonText:
-                    text: "Sign In"
+                    MDTextField:
+                        id: password
+                        password: True
+                        MDTextFieldHintText:
+                            text: "Enter Password"
+                        MDTextFieldTrailingIcon:
+                            icon: "key"
+
+            # Make the Sign In button slightly smaller than the full width
+            AnchorLayout:
+                anchor_x: "center"
+                size_hint_y: 0.5  # Takes remaining space
+
+                MDButton:
+                    style: "elevated"
+                    size_hint_x: None  # Slightly smaller than full width
+                    pos_hint: {"center_x": 0.5}
+                    width: self.parent.width * 0.9
+                    height: self.parent.height * 0.9
+
+                    on_press:
+                        app.username = username.text
+                        app.password = password.text
+                        root.open_test_type_screen()
+
+                    MDButtonText:
+                        text: "Sign In"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        font_style: "Title"
+                        
+
 
         # ----------------------------------
         # BOTTOM SECTION
@@ -67,15 +90,31 @@
                 anchor_x: "center"
                 anchor_y: "center"
                 
-                MDButton:
-                    style: "elevated"
-                    theme_width: "Custom"
-                    height: "128"
-                    size_hint_x: 0.4
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: 0.2  # Controls vertical space taken
+                    spacing: "10dp"  # Prevents buttons from touching
 
-                    on_press: root.open_cleaning_screen()
-                    
-                    MDButtonText:
-                        text: "Cleaning Instructions"
-                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-                        font_style: "Title"
+                    MDButton:
+                        style: "elevated"
+                        theme_width: "Custom"
+                        height: "60"
+                        size_hint_x: 0.5  # Each button takes 50% of the width
+                        on_press: root.open_cleaning_screen()
+                        
+                        MDButtonText:
+                            text: "Cleaning Instructions"
+                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            font_style: "Title"
+
+                    MDButton:
+                        style: "elevated"
+                        theme_width: "Custom"
+                        height: "60"
+                        size_hint_x: 0.5  # Each button takes 50% of the width
+                        on_press: root.open_service_screen()
+                        
+                        MDButtonText:
+                            text: "Servicing Instructions"
+                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            font_style: "Title"
