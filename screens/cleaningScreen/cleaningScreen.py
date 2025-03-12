@@ -35,32 +35,18 @@ class CleaningScreen(helperPage):
             )
             self.ids.setup_steps.add_widget(card)
 
-        # Connect to the database
+        # Fetch latest runsSinceLastService value
         conn = sqlite3.connect('data/appData.db')
         c = conn.cursor()
-        
-        # Fetch the latest usagesSinceLastService value
-        c.execute("SELECT usagesSinceLastService FROM deviceService ORDER BY serviceID DESC LIMIT 1")
-        usages_since_service = c.fetchone()
+        c.execute("SELECT usagesSinceLastService FROM deviceService LIMIT 1")
+        row = c.fetchone()
         conn.close()
 
-        # Ensure a value was retrieved
-        if usages_since_service:
-            usages_since_service = usages_since_service[0]  # Extract integer value
-        else:
-            usages_since_service = 0  # Default value if no entry exists
-
+        usages_since_service = row[0] if row else 0  # Default to 0 if no data
         self.ids.runs_since_last_service.text = f"Runs Since Last Service: {usages_since_service}"
 
-        # Check if "COMPLETE" button exists
-        complete_button = self.ids.get("complete_button")
-        if complete_button:
-            if usages_since_service >= 5:
-                # Remove button if count is 5 or more
-                parent_layout = complete_button.parent
-                if parent_layout:
-                    parent_layout.remove_widget(complete_button)
-            else:
-                # Ensure the button is visible if usagesSinceLastService < 5
-                complete_button.opacity = 1
-                complete_button.disabled = False
+        # Toggle visibility instead of removing the button
+        if usages_since_service >= 5:
+            self.ids.complete_button.disabled = True
+        else:
+            self.ids.complete_button.disabled = False
