@@ -26,7 +26,7 @@ class CleaningScreen(helperPage):
             instructions = []
 
         self.ids.setup_steps.clear_widgets()  # Clear previous widgets
-        self.carousel = Carousel(direction="right")
+        self.carousel = Carousel(direction="right", loop=True, size_hint_y=1)  # Ensure the carousel takes up full available height
 
         if not instructions:
             error_label = MDLabel(
@@ -114,8 +114,8 @@ class CleaningScreen(helperPage):
                 spacing="5dp",
             )
 
-            # Checkbox for step completion
-            checkbox = MDCheckbox(size_hint=(None, None), size=("48dp", "48dp"))
+            # Checkbox for step completion (scale the checkbox to fill the space)
+            checkbox = MDCheckbox(size_hint=(1, 1))  # Let the checkbox fill the container's space
             checkbox.bind(active=lambda chk, val, i=idx: self.on_checkbox_active(chk, val, i))
             checkbox_box.add_widget(checkbox)
 
