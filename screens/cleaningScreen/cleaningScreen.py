@@ -44,8 +44,8 @@ class CleaningScreen(helperPage):
 
         usages_since_service = row[0] if row else 0  # Default to 0 if no data
         
-        # Update the button text instead of a separate label
-        self.ids.runs_since_last_service.text = f"Perform Servicing\nRuns Since Last Service: {usages_since_service}"
+        # Update button text with different font sizes
+        self.ids.runs_since_last_service.text = f"[size=22sp]Perform Servicing[/size][size=14sp]\nRuns Since Last Service: {usages_since_service}[/size]"
 
         # Toggle visibility instead of removing the button
         if usages_since_service >= 5:
