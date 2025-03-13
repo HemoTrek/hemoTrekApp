@@ -91,22 +91,26 @@
                                 style: "elevated"
                                 theme_width: "Custom"
                                 size_hint_x: None
-                                width: "150dp"
-                                height: "128dp"
+                                width: "500dp"
+                                height: "200dp"
                                 on_press: root.open_emergency_patients_screen()
 
                                 MDButtonText:
                                     text: "Emergency"
-                                    font_style: "Title"        
+                                    font_style: "Title"   
+                                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+     
 
                             MDButton:
                                 style: "elevated"
                                 theme_width: "Custom"
                                 size_hint_x: None
-                                width: "150dp"
-                                height: "128dp"
+                                width: "500dp"
+                                height: "200dp"
                                 on_press: root.open_oncology_patients_screen()
 
                                 MDButtonText:
                                     text: "Oncology"
                                     font_style: "Title"    
+                                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
