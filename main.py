@@ -40,7 +40,9 @@ def init_db():
 
     # Execute the script. This runs each statement in schema.sql
     cursor.executescript(schema_sql_script)
-    cursor.executescript(data_sql_script)
+
+    #UNCOMMENT THIS IF YOU WANT TO GENERATE NEW PATIENTS
+    #cursor.executescript(data_sql_script)
 
     conn.commit()
     cursor.close()

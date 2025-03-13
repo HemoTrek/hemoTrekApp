@@ -4,16 +4,16 @@
 
 -- 1) Sample Patient Data
 INSERT INTO patientInfo (name, department, dateOfBirth, notes) VALUES
-('Alice Johnson', 'Oncology', '1980-03-15', 'Regular check-ups'),
-('Bob Smith', 'Emergency', '1975-07-22', 'Follow-up after accident'),
-('Carol White', 'Oncology', '1968-11-30', 'Under observation for potential issues'),
-('David Brown', 'Emergency', '1990-02-10', 'Admitted due to trauma'),
-('Eve Black', 'Oncology', '2010-06-05', 'Pediatric oncology case'),
-('Frank Green', 'Emergency', '1985-04-17', 'Injured in a minor incident'),
-('Grace Lee', 'Oncology', '1995-09-23', 'Monitoring treatment response'),
-('Henry Kim', 'Emergency', '1978-12-05', 'Emergency admission for evaluation'),
-('Isabella Garcia', 'Oncology', '1982-08-14', 'Follow-up for therapy'),
-('Jack Martinez', 'Emergency', '1965-03-30', 'Post-accident care');
+('Sean Rose', 'Oncology', '1980-03-15', 'Regular check-ups'),
+('Joey Mitchell', 'Emergency', '1975-07-22', 'Follow-up after accident'),
+('Hannah Trub', 'Oncology', '1968-11-30', 'Under observation for potential issues'),
+('Sam Suys', 'Emergency', '1990-02-10', 'Admitted due to trauma'),
+('Rhys Cornelious', 'Oncology', '2010-06-05', 'Pediatric oncology case'),
+('Bryan Tripp', 'Emergency', '1985-04-17', 'Injured in a minor incident'),
+('Calvin Young', 'Oncology', '1995-09-23', 'Monitoring treatment response'),
+('Brian Li', 'Emergency', '1978-12-05', 'Emergency admission for evaluation'),
+('Eline Boghaert', 'Oncology', '1982-08-14', 'Follow-up for therapy'),
+('Maud Gorbet', 'Emergency', '1965-03-30', 'Post-accident care');
 
 -- 2) Sample Test Results
 -- Assuming patientIDs are assigned sequentially (1 to 10)
