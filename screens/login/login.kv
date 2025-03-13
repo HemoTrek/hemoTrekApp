@@ -66,7 +66,8 @@
                     height: self.parent.height * 0.9
 
                     on_press:
-                        app.username = username.text
+                        #app.username = username.text
+                        app.username = "HemoTrek User"
                         app.password = password.text
                         root.open_test_type_screen()
 
@@ -88,18 +89,18 @@
 
             AnchorLayout:
                 anchor_x: "center"
-                anchor_y: "center"
+                anchor_y: "bottom"
                 
                 MDBoxLayout:
                     orientation: "horizontal"
-                    size_hint_y: 0.2  # Controls vertical space taken
+                    size_hint_y: 0.1  # Controls vertical space taken
                     spacing: "10dp"  # Prevents buttons from touching
 
                     MDButton:
                         style: "elevated"
                         theme_width: "Custom"
                         height: "60"
-                        size_hint_x: 0.5  # Each button takes 50% of the width
+                        size_hint_x: 0.4  # Each button takes 50% of the width
                         on_press: root.open_cleaning_screen()
                         
                         MDButtonText:
@@ -111,7 +112,7 @@
                         style: "elevated"
                         theme_width: "Custom"
                         height: "60"
-                        size_hint_x: 0.5  # Each button takes 50% of the width
+                        size_hint_x: 0.4  # Each button takes 50% of the width
                         on_press: root.open_service_screen()
                         
                         MDButtonText:
