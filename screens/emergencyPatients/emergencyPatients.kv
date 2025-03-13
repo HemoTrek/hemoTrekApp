@@ -53,9 +53,19 @@
             spacing: "10dp"
             padding: "10dp"
 
+            AnchorLayout:
+                anchor_x: "center"  # Centers the button horizontally
+                anchor_y: "bottom"
+                size_hint_y: None
+                height: "70dp"  # Adjust based on button size
 
-            MDButton:
-                on_press: root.select_patient("[No Patient Selected]")
+                MDButton:
+                    style: "elevated"
+                    on_press: root.select_patient("[No Patient Selected]")
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    width: self.parent.width * 0.9
+                    height: self.parent.height * 0.7
 
-                MDButtonText:
-                    text: "Run Without Patient"
+                    MDButtonText:
+                        text: "Run Without Patient"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
