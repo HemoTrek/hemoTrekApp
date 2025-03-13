@@ -36,21 +36,17 @@
             padding: "20dp"
             spacing: "10dp"
 
-#            MDButton:
-#                style: "elevated"
-#                on_press: root.open_cleaning_screen()
-#                size_hint_x: 0.3
-#                size_hint_y: 0.3
-               
-#                MDButtonText:
-#                    text: "Back to Cleaning Screen"
+            AnchorLayout:
+                anchor_x: "center"  # Centers the button horizontally
+                anchor_y: "bottom"
+                size_hint_y: None
+                    
+                MDButton:
+                    style: "elevated"
+                    on_press: root.reset_service_counter()
+                    width: self.parent.width * 0.9
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-
-            MDButton:
-                style: "elevated"
-                on_press: root.reset_service_counter()
-                size_hint_x: 0.3
-                size_hint_y: 0.3
-
-                MDButtonText:
-                    text: "COMPLETE"
+                    MDButtonText:
+                        text: "COMPLETE"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
