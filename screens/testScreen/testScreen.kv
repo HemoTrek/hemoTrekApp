@@ -115,16 +115,43 @@
                     color: "black"         
 
         MDBoxLayout:
-            orientation: "vertical"
-            spacing: "20dp"
+            orientation: "horizontal"
+            size_hint_y: 0.2
             padding: "20dp"
-            size_hint_y: 0.3
+            spacing: "10dp"
 
-            MDButton:
-                size_hint: None, None
-                size: ("150dp", "50dp")
-                pos_hint: {"center_x": .5, "center_y": .5}              
-                on_press: root.open_cleaning_screen()
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "bottom"
+                
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: 0.2  # Controls vertical space taken
+                    spacing: "10dp"  # Prevents buttons from touching
 
-                MDButtonText:
-                    text: "Proceed to Cleaning"
+                    MDButton:
+                        id: results_recorded_button
+                        style: "elevated"
+                        theme_width: "Custom"
+                        height: "80"
+                        size_hint_x: 0.3  
+                        on_press: root.enable_cleaning_button()
+
+                        MDButtonText:
+                            text: "Results Recorded"
+                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            font_style: "Title"
+
+                    MDButton:
+                        id: proceed_to_cleaning_button
+                        style: "elevated"
+                        theme_width: "Custom"
+                        height: "80"
+                        size_hint_x: 0.7  
+                        disabled: True  # Initially disabled until Results Recorded button is pressed
+                        on_press: root.open_cleaning_screen()
+
+                        MDButtonText:
+                            text: "Proceed to Cleaning"
+                            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                            font_style: "Title"

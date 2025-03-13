@@ -67,3 +67,11 @@ class TestScreen(helperPage):
         It schedules a UI update on the main thread.
         """
         Clock.schedule_once(lambda dt: self.update_results(results))
+
+    def enable_cleaning_button(self):
+        """Enable the 'Proceed to Cleaning' button when 'Results Recorded' is clicked."""
+        self.ids.proceed_to_cleaning_button.disabled = False
+    
+    def on_pre_leave(self, *args):
+        """Reset the 'Proceed to Cleaning' button to disabled when leaving the screen."""
+        self.ids.proceed_to_cleaning_button.disabled = True
