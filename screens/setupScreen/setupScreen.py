@@ -83,7 +83,7 @@ class SetupScreen(helperPage):
             )
 
             label = MDLabel(
-                text=f"[size=48sp]Step {idx + 1}: {step.get('instruction')}[/size]",
+                text=f"[size=32sp]Step {idx + 1}: {step.get('instruction')}[/size]",
                 theme_text_color="Primary",
                 halign="center",
                 valign="middle",

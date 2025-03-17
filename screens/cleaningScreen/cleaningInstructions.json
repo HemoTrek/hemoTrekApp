@@ -5,23 +5,23 @@
         "image": "images/cleaningImages/cleaningImage1.png"
       },
       {
-        "instruction": "Remove capillary tubes",
+        "instruction": "Step 1a) Remove capillary tubes",
         "image": "images/cleaningImages/cleaningImage2.png"
       },
       {
-        "instruction": "Remove the pipette tip",
+        "instruction": "Step 1b) Remove the pipette tip",
         "image": "images/cleaningImages/cleaningImage3.png"
       },
       {
-        "instruction": "Remove both microcentrifuge tubes",
+        "instruction": "Step 1c) Remove both microcentrifuge tubes",
         "image": "images/cleaningImages/cleaningImage4.png"
       },
       {
-        "instruction": "Dispose of all products in their appropriate waste receptacles",
+        "instruction": "Step 2) Dispose of all products in their appropriate waste receptacles",
         "image": "images/cleaningImages/cleaningImage5.png"
       },
       {
-        "instruction": "Press Complete or Perform Servicing if required",
+        "instruction": "Cleaning Complete! Press 'Complete' or 'Perform Servicing'",
         "image": "images/cleaningImages/cleaningImage6.png"
       }
     ]

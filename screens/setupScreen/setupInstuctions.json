@@ -39,6 +39,10 @@
     {
       "instruction": "Double check that there are no alerts on the screen.",
       "image": "images/setupImages/setupImage10.png"
+    },
+    {
+      "instruction": "Setup Complete! Run the test.",
+      "image": "images/setupImages/setupImage11.png"
     }
   ]
 }

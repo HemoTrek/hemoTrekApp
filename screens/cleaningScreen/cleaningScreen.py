@@ -29,7 +29,7 @@ class CleaningScreen(helperPage):
             print(f"Error loading cleaning instructions: {e}")
             instructions = []
 
-        self.ids.setup_steps.clear_widgets()
+        self.ids.cleaning_steps.clear_widgets()
         self.current_step = 0  # Initialize current step to 0
 
         if not instructions:
@@ -38,7 +38,7 @@ class CleaningScreen(helperPage):
                 halign="center",
                 theme_text_color="Error",
             )
-            self.ids.setup_steps.add_widget(error_label)
+            self.ids.cleaning_steps.add_widget(error_label)
             return
 
         base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -87,7 +87,7 @@ class CleaningScreen(helperPage):
             )
 
             label = MDLabel(
-                text=f"[size=48sp]Step {idx + 1}: {step.get('instruction')}[/size]",
+                text=f"[size=48sp]{step.get('instruction')}[/size]",
                 theme_text_color="Primary",
                 halign="center",  # Horizontally center the label
                 valign="middle",  # Vertically center the label
@@ -97,7 +97,7 @@ class CleaningScreen(helperPage):
             instruction_box.add_widget(label)
 
             step_layout.add_widget(instruction_box)
-            self.ids.setup_steps.add_widget(step_layout)
+            self.ids.cleaning_steps.add_widget(step_layout)
 
         print(f"Total steps added: {len(instructions)}")
 
