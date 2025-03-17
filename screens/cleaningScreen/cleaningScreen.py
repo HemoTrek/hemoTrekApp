@@ -6,7 +6,6 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.image import Image
 from kivy.uix.anchorlayout import AnchorLayout
 from kivymd.uix.label import MDLabel
-from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.core.window import Window
 from screens.helperPage.helperPage import helperPage
@@ -31,6 +30,7 @@ class CleaningScreen(helperPage):
             instructions = []
 
         self.ids.setup_steps.clear_widgets()
+        self.current_step = 0  # Initialize current step to 0
 
         if not instructions:
             error_label = MDLabel(
@@ -53,11 +53,11 @@ class CleaningScreen(helperPage):
                 size_hint=(1, 1)
             )
 
-            # --------- IMAGE at the top ----------
+            # Adjust the image box size to be twice the size of the instructions box
             image_box = AnchorLayout(
                 anchor_x="center",
-                anchor_y="top",
-                size_hint=(1, 0.6)
+                anchor_y="center",
+                size_hint=(1, 0.8)  # Image box will take 80% of the vertical space
             )
 
             if step.get("image"):
@@ -77,40 +77,25 @@ class CleaningScreen(helperPage):
 
             step_layout.add_widget(image_box)
 
-            # --------- INSTRUCTION + CHECKBOX just below image ----------
-            instruction_checkbox_box = MDBoxLayout(
-                orientation="horizontal",
-                size_hint=(1, None),
-                spacing="60dp",
-                padding=("10dp", "0dp")  # Removed top padding to keep it close to image
-            )
-
-            #Instruction Text
-            instruction_label = MDLabel(
-                text=f"Step {idx + 1}: {step.get('instruction')}",
-                theme_text_color="Primary",
-                halign="left",
-                size_hint_x=0.75,
-                valign="middle"
-            )
-            instruction_label.bind(size=instruction_label.setter('text_size'))  # Wrap text
-
-            checkbox_box = MDBoxLayout(
+            instruction_box = MDBoxLayout(
                 orientation="vertical",
-                size_hint_x=0.25,
-                padding="0dp",
+                size_hint=(1, 0.2),  # Instructions box will take 20% of the vertical space
+                padding="5dp",
+                spacing="10dp",
+                pos_hint={"center_x": 0.5, "center_y": 0.5},  # Center the instruction box
             )
 
-            checkbox = MDCheckbox(size_hint=(None, None), size=("40dp", "40dp"), pos_hint={"center_x": 0.5, "center_y": 0.5})
-            checkbox.bind(active=lambda chk, val, i=idx: self.on_checkbox_active(chk, val, i))
-            checkbox_box.add_widget(checkbox)
+            label = MDLabel(
+                text=f"[size=48sp]Step {idx + 1}: {step.get('instruction')}[/size]",
+                theme_text_color="Primary",
+                halign="center",  # Horizontally center the label
+                valign="middle",  # Vertically center the label
+                size_hint_y=None,
+                markup=True
+            )
+            instruction_box.add_widget(label)
 
-            instruction_checkbox_box.add_widget(instruction_label)
-            instruction_checkbox_box.add_widget(checkbox_box)
-
-            step_layout.add_widget(instruction_checkbox_box)
-
-            # Add step layout to Carousel
+            step_layout.add_widget(instruction_box)
             self.ids.setup_steps.add_widget(step_layout)
 
         print(f"Total steps added: {len(instructions)}")
@@ -127,10 +112,5 @@ class CleaningScreen(helperPage):
 
     def on_checkbox_active(self, checkbox, value, slide_index):
         """Move to the next slide when checkbox is checked."""
-        if value:
-            next_index = slide_index + 1
-            if next_index < len(self.ids.setup_steps.children):
-                self.ids.setup_steps.index = next_index
-                print(f"Moved to step {next_index + 1}")
-            else:
-                print("Last step reached!")
+        # This function is no longer used since the checkbox was removed
+        pass
