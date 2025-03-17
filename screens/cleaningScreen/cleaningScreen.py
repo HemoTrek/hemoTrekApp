@@ -8,7 +8,11 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivymd.uix.label import MDLabel
 from kivymd.uix.selectioncontrol import MDCheckbox
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivy.core.window import Window
 from screens.helperPage.helperPage import helperPage
+
+# Set fullscreen
+Window.fullscreen = 'auto'
 
 class CleaningScreen(helperPage):
 
@@ -27,7 +31,6 @@ class CleaningScreen(helperPage):
             instructions = []
 
         self.ids.setup_steps.clear_widgets()
-        self.carousel = Carousel(direction="right", loop=True, size_hint_y=1)
 
         if not instructions:
             error_label = MDLabel(
@@ -47,16 +50,13 @@ class CleaningScreen(helperPage):
                 orientation="vertical",
                 padding="10dp",
                 spacing="10dp",
-                size_hint_y=None,
-                height="300dp"
+                size_hint=(1, 1)
             )
 
-            # Image container: Center the image properly
             image_box = AnchorLayout(
                 anchor_x="center",
                 anchor_y="center",
-                size_hint=(1, None),
-                height="250dp"
+                size_hint=(1, 0.6)
             )
 
             if step.get("image"):
@@ -78,7 +78,7 @@ class CleaningScreen(helperPage):
 
             instruction_checkbox_box = MDBoxLayout(
                 orientation="horizontal",
-                size_hint_y=0.3,
+                size_hint=(1, 0.4),
                 padding="10dp",
                 spacing="10dp"
             )
@@ -113,10 +113,10 @@ class CleaningScreen(helperPage):
             instruction_checkbox_box.add_widget(instruction_box)
             instruction_checkbox_box.add_widget(checkbox_box)
             step_layout.add_widget(instruction_checkbox_box)
-            self.carousel.add_widget(step_layout)
 
-        self.ids.setup_steps.add_widget(self.carousel)
-        print(f"Total steps added to carousel: {len(self.carousel.slides)}")
+            self.ids.setup_steps.add_widget(step_layout)
+
+        print(f"Total steps added: {len(instructions)}")
 
         conn = sqlite3.connect('data/appData.db')
         c = conn.cursor()
@@ -125,15 +125,15 @@ class CleaningScreen(helperPage):
         conn.close()
 
         usages_since_service = row[0] if row else 0
-        self.ids.runs_since_last_service.text = f"[size=22sp]Perform Servicing[/size][size=14sp]\nRuns Since Last Service: {usages_since_service}[/size]"
+        self.ids.runs_since_last_service.text = f"[size=22sp]Perform Servicing[/size]\n[size=14sp]Runs Since Last Service: {usages_since_service}[/size]"
         self.ids.complete_button.disabled = usages_since_service >= 5
 
     def on_checkbox_active(self, checkbox, value, slide_index):
-        """Move to the next slide in the carousel when the checkbox is checked."""
+        """Move to the next slide when checkbox is checked."""
         if value:
             next_index = slide_index + 1
-            if next_index < len(self.carousel.slides):
-                self.carousel.index = next_index
+            if next_index < len(self.ids.setup_steps.children):
+                self.ids.setup_steps.index = next_index
                 print(f"Moved to step {next_index + 1}")
             else:
                 print("Last step reached!")
