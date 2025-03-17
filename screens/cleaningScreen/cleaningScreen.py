@@ -53,7 +53,7 @@ class CleaningScreen(helperPage):
                 size_hint=(1, 1)
             )
 
-            # Adjust the image box size to be twice the size of the instructions box
+            # Adjust the image box size to be larger
             image_box = AnchorLayout(
                 anchor_x="center",
                 anchor_y="center",
@@ -65,10 +65,11 @@ class CleaningScreen(helperPage):
                 print(f"Loading image: {image_path}")
                 
                 if os.path.exists(image_path):
+                    # Increase the size of the image within the layout
                     image = Image(
                         source=image_path,
-                        size_hint=(None, None),
-                        size=("200dp", "200dp"),
+                        size_hint=(None, None),  # Make the size explicit
+                        size=("400dp", "400dp"),  # Explicit size for the image
                         allow_stretch=True
                     )
                     image_box.add_widget(image)
