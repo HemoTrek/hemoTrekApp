@@ -69,7 +69,7 @@ class CleaningScreen(helperPage):
                     image = Image(
                         source=image_path,
                         size_hint=(None, None),  # Make the size explicit
-                        size=("400dp", "400dp"),  # Explicit size for the image
+                        size=("360dp", "360dp"),  # Explicit size for the image
                         allow_stretch=True
                     )
                     image_box.add_widget(image)

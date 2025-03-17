@@ -20,12 +20,12 @@
         # ----------------------------------
         # SCROLLABLE INSTRUCTIONS SECTION
         # ----------------------------------
-        ScrollView:
-            size_hint_y: 0.8
-            MDList:
-                id: setup_steps
-                padding: "20dp"  # Padding around the list
-                spacing: "10dp"  # Space between each step
+        Carousel:
+            id: setup_steps
+            size_hint_y: 0.85
+            padding: "10dp"
+            spacing: "10dp"
+            loop: True
                 
         # ----------------------------------
         # BOTTOM SECTION (Buttons)
