@@ -53,9 +53,10 @@ class CleaningScreen(helperPage):
                 size_hint=(1, 1)
             )
 
+            # --------- IMAGE at the top ----------
             image_box = AnchorLayout(
                 anchor_x="center",
-                anchor_y="center",
+                anchor_y="top",
                 size_hint=(1, 0.6)
             )
 
@@ -76,44 +77,40 @@ class CleaningScreen(helperPage):
 
             step_layout.add_widget(image_box)
 
+            # --------- INSTRUCTION + CHECKBOX just below image ----------
             instruction_checkbox_box = MDBoxLayout(
                 orientation="horizontal",
-                size_hint=(1, 0.4),
-                padding="10dp",
-                spacing="10dp"
+                size_hint=(1, None),
+                spacing="60dp",
+                padding=("10dp", "0dp")  # Removed top padding to keep it close to image
             )
 
-            instruction_box = MDBoxLayout(
-                orientation="vertical",
-                size_hint_x=0.75,
-                padding="5dp",
-                spacing="5dp"
-            )
-
-            label = MDLabel(
+            #Instruction Text
+            instruction_label = MDLabel(
                 text=f"Step {idx + 1}: {step.get('instruction')}",
                 theme_text_color="Primary",
                 halign="left",
-                size_hint_y=None,
-                height="40dp"
+                size_hint_x=0.75,
+                valign="middle"
             )
-            instruction_box.add_widget(label)
+            instruction_label.bind(size=instruction_label.setter('text_size'))  # Wrap text
 
             checkbox_box = MDBoxLayout(
                 orientation="vertical",
                 size_hint_x=0.25,
-                padding="5dp",
-                spacing="5dp",
+                padding="0dp",
             )
 
-            checkbox = MDCheckbox(size_hint=(1, 1))
+            checkbox = MDCheckbox(size_hint=(None, None), size=("40dp", "40dp"), pos_hint={"center_x": 0.5, "center_y": 0.5})
             checkbox.bind(active=lambda chk, val, i=idx: self.on_checkbox_active(chk, val, i))
             checkbox_box.add_widget(checkbox)
 
-            instruction_checkbox_box.add_widget(instruction_box)
+            instruction_checkbox_box.add_widget(instruction_label)
             instruction_checkbox_box.add_widget(checkbox_box)
+
             step_layout.add_widget(instruction_checkbox_box)
 
+            # Add step layout to Carousel
             self.ids.setup_steps.add_widget(step_layout)
 
         print(f"Total steps added: {len(instructions)}")
