@@ -1,23 +1,19 @@
 {
     "service_instructions": [
       {
-        "instruction": "Step 1) Watch out for the freaky ahh turtles",
+        "instruction": "Step 1) Take out waste container, remove lid, poor contents down the drain",
         "image": "images/serviceImages/serviceImage1.png"
       },
       {
-        "instruction": "Step 2) Homophobia",
+        "instruction": "Step 2) Send waste container to medical device reprocessing department",
         "image": "images/serviceImages/serviceImage2.png"
       },
       {
-        "instruction": "Step 3) Profit",
+        "instruction": "Step 3) Refill cleaning solution (be sure to not overfill)",
         "image": "images/serviceImages/serviceImage3.png"
       },
       {
-        "instruction": "Step 4) Remove both microcentrifuge tubes",
-        "image": "images/serviceImages/serviceImage3.png"
-      },
-      {
-        "instruction": "Step 5) Dispose of all products in their appropriate waste receptacles",
+        "instruction": "Step 4) Put back all containers in their appropriate spots",
         "image": "images/serviceImages/serviceImage3.png"
       },
       {
