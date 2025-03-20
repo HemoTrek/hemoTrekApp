@@ -1,6 +1,7 @@
 import socket
 import json
 import threading
+from kivy.app import App
 
 DELIMITER = "\n"
 
@@ -46,14 +47,11 @@ class PersistentServer:
                 print("Error receiving data:", e)
                 self.running = False
 
-    # Example: When the server receives results from the firmware...
     def handle_message(self, message):
-        # Check if results are included
         if "result" in message:
-            results = message["result"]  # This should be a dict with keys like 'serumViscosity', etc.
+            results = message["result"]
             print("Results Received:", results)
-            # Now, update the TestScreen.
-            from kivy.app import App
+
             app = App.get_running_app()
             test_screen = app.root.get_screen('test')
             test_screen.on_results_received(results)
