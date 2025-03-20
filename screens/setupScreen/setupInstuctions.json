@@ -1,48 +1,40 @@
 {
   "setup_instructions": [
     {
-      "instruction": "Insert capillary tubes into each buckle. Both red lines must be visible.",
-      "image": "images/setupImages/setupImage1.png"
+      "instruction": "Step 1) Insert capillary tubes into each buckle as shown. Each red lines must be visible.",
+      "image": "images/setupImages/CapillaryTubesInBuckles.jpg"
     },
     {
-      "instruction": "Clasp the buckles so they are secured to each support.",
-      "image": "images/setupImages/setupImage2.png"
+      "instruction": "Step 2) Clasp the buckles so they are secured to the viscometer support.",
+      "image": "images/setupImages/HemoTrekLogo.png"
     },
     {
-      "instruction": "Double check that the clasps on the cylinders are secure.",
-      "image": "images/setupImages/setupImage3.png"
+      "instruction": "Step 3) Ensure the sterilization container fluid is above the minimum level marking. Otherwise perform servicing.",
+      "image": "images/setupImages/SterilizationContainerFilled.png"
     },
     {
-      "instruction": "Ensure the sterilization container fluid is above the minimum level marking. Otherwise perform servicing.",
-      "image": "images/setupImages/setupImage4.png"
+      "instruction": "Step 4) Ensure the maximum fill line in the waste reservoir is still visible. Otherwise, perform servicing.",
+      "image": "images/setupImages/WasteReservoirBelowMaxFillLine.jpg"
     },
     {
-      "instruction": "Ensure the maximum fill line in the waste reservoir is still visible. Otherwise, perform servicing.",
-      "image": "images/setupImages/setupImage5.jpg"
+      "instruction": "Step 5) Place the other sample in the centrifuge slot. Secure the lid of the centrifuge.",
+      "image": "images/setupImages/HemoTrekLogo.png"
     },
     {
-      "instruction": "Place one blood sample in the wholeblood holder. Ensure the lid of the microcentrifuge tube is closed properly.",
-      "image": "images/setupImages/setupImage6.png"
+      "instruction": "Step 6) Place one blood sample in the wholeblood holder. Ensure the lid of the microcentrifuge tube is closed properly.",
+      "image": "images/setupImages/HemoTrekLogo.png"
     },
     {
-      "instruction": "Place the other sample in the designated slot within the centrifuge. Secure the lid of the centrifuge.",
-      "image": "images/setupImages/setupImage7.png"
+      "instruction": "Step 7) Insert a new pipette tip.",
+      "image": "images/setupImages/HemoTrekLogo.png"
     },
     {
-      "instruction": "Insert a new pipette tip.",
-      "image": "images/setupImages/setupImage8.png"
-    },
-    {
-      "instruction": "Close the door securely.",
-      "image": "images/setupImages/setupImage9.png"
-    },
-    {
-      "instruction": "Double check that there are no alerts on the screen.",
-      "image": "images/setupImages/setupImage10.png"
+      "instruction": "Step 8) Close the door securely.",
+      "image": "images/setupImages/HemoTrekLogo.png"
     },
     {
       "instruction": "Setup Complete! Run the test.",
-      "image": "images/setupImages/setupImage11.png"
+      "image": "images/setupImages/HemoTrekLogo.png"
     }
   ]
 }

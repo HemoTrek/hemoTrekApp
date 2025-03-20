@@ -109,7 +109,7 @@ class CleaningScreen(helperPage):
 
         usages_since_service = row[0] if row else 0
         self.ids.runs_since_last_service.text = f"[size=22sp]Perform Servicing[/size]\n[size=14sp]Runs Since Last Service: {usages_since_service}[/size]"
-        self.ids.complete_button.disabled = usages_since_service >= 5
+        self.ids.complete_button.disabled = usages_since_service >= 10
 
     def on_checkbox_active(self, checkbox, value, slide_index):
         """Move to the next slide when checkbox is checked."""

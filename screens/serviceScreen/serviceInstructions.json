@@ -1,24 +1,24 @@
 {
     "service_instructions": [
       {
-        "instruction": "Step 1) Take out waste container, remove lid, poor contents down the drain",
-        "image": "images/serviceImages/serviceImage1.png"
+        "instruction": "Step 1) Take out waste container. Remove lid. Pour contents down the drain.",
+        "image": "images/serviceImages/HemoTrekLogo.png"
       },
       {
         "instruction": "Step 2) Send waste container to medical device reprocessing department",
-        "image": "images/serviceImages/serviceImage2.png"
+        "image": "images/serviceImages/MDR_Sterilization.jpg"
       },
       {
-        "instruction": "Step 3) Refill cleaning solution (be sure to not overfill)",
-        "image": "images/serviceImages/serviceImage3.png"
+        "instruction": "Step 3) Refill cleaning solution. Do not overfill.",
+        "image": "images/serviceImages/SterilizationContainerFilled.png"
       },
       {
         "instruction": "Step 4) Put back all containers in their appropriate spots",
-        "image": "images/serviceImages/serviceImage3.png"
+        "image": "images/serviceImages/HemoTrekLogo.png"
       },
       {
         "instruction": "Servicing Complete!",
-        "image": "images/serviceImages/serviceImage6.png"
+        "image": "images/serviceImages/HemoTrekLogo.png"
       }
     ]
   }
