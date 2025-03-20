@@ -2,7 +2,7 @@
     "service_instructions": [
       {
         "instruction": "Step 1) Take out waste container. Remove lid. Pour contents down the drain.",
-        "image": "images/serviceImages/HemoTrekLogo.png"
+        "image": "images/serviceImages/PourOutWaste.jpg"
       },
       {
         "instruction": "Step 2) Send waste container to medical device reprocessing department",

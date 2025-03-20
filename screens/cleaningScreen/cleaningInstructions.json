@@ -2,7 +2,7 @@
     "cleaning_instructions": [
       {
         "instruction": "Open the door",
-        "image": "images/serviceImages/HemoTrekLogo.png"
+        "image": "images/cleaningImages/HemoTrekLogo.png"
       },
       {
         "instruction": "Step 1a) Remove capillary tubes",
@@ -10,15 +10,15 @@
       },
       {
         "instruction": "Step 1b) Remove the pipette tip",
-        "image": "images/cleaningImages/MicroPipette.png"
+        "image": "images/cleaningImages/MicroPipette.jpg"
       },
       {
         "instruction": "Step 1c) Remove both microcentrifuge tubes",
-        "image": "images/cleaningImages/HemoTrekLogo.png"
+        "image": "images/cleaningImages/BothBloodSamples.jpg"
       },
       {
         "instruction": "Step 2) Dispose of all products in their appropriate waste receptacles",
-        "image": "images/cleaningImages/HemoTrekLogo.png"
+        "image": "images/cleaningImages/WasteContainers.jpg"
       },
       {
         "instruction": "Cleaning Complete! Press 'Complete' or 'Perform Servicing'",
