@@ -6,7 +6,7 @@
     },
     {
       "instruction": "Step 2) Clasp the buckles so they are secured to the viscometer support.",
-      "image": "images/setupImages/HemoTrekLogo.png"
+      "image": "images/setupImages/BucklesSecured.jpg"
     },
     {
       "instruction": "Step 3) Ensure the sterilization container fluid is above the minimum level marking. Otherwise perform servicing.",
@@ -17,16 +17,16 @@
       "image": "images/setupImages/WasteReservoirBelowMaxFillLine.jpg"
     },
     {
-      "instruction": "Step 5) Place the other sample in the centrifuge slot. Secure the lid of the centrifuge.",
-      "image": "images/setupImages/HemoTrekLogo.png"
+      "instruction": "Step 5) Place one blood sample in the centrifuge slot. Secure the lid of the centrifuge.",
+      "image": "images/setupImages/SerumSample.jpg"
     },
     {
-      "instruction": "Step 6) Place one blood sample in the wholeblood holder. Ensure the lid of the microcentrifuge tube is closed properly.",
-      "image": "images/setupImages/HemoTrekLogo.png"
+      "instruction": "Step 6) Place the other blood sample in the wholeblood holder.",
+      "image": "images/setupImages/WholebloodSample.jpg"
     },
     {
       "instruction": "Step 7) Insert a new pipette tip.",
-      "image": "images/setupImages/HemoTrekLogo.png"
+      "image": "images/setupImages/MicroPipette.png"
     },
     {
       "instruction": "Step 8) Close the door securely.",
